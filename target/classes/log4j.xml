@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.exam.controller">
+	<logger name="it.company.noname">
 		<level value="info" />
 	</logger>
 	

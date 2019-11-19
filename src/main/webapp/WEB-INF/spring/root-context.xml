@@ -17,8 +17,8 @@
 		<property name="jdbcUrl"
 			value="jdbc:log4jdbc:mysql://localhost:3306/jspdb?useUnicode=true&amp;characterEncoding=utf8&amp;allowPublicKeyRetrieval=true&amp;useSSL=false&amp;serverTimezone=Asia/Seoul" />
 		<!-- 각자 설정 계정 및 비밀번호 -->
-		<property name="username" value="brooks" />
-		<property name="password" value="" />
+		<property name="username" value="jspid" />
+		<property name="password" value="jsppass" />
 	</bean>
 
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
@@ -31,7 +31,7 @@
 		<property name="configLocation" value="classpath:/mybatis-config.xml"/>
 	</bean>
 	
-	<mybatis-spring:scan base-package="it.company.shop.mapper"/>
-	<context:component-scan base-package="it.company.shop.service"/>
+	<mybatis-spring:scan base-package="it.company.noname.mapper"/>
+	<context:component-scan base-package="it.company.noname.service"/>
 	
 </beans>
