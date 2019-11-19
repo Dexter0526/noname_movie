@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="it.company.noname">
+	<logger name="it.company.noname.controller">
 		<level value="info" />
 	</logger>
 	
