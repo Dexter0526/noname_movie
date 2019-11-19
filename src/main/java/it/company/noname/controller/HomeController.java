@@ -1,4 +1,4 @@
-package it.company.noname;
+package it.company.noname.controller;
 
 import java.text.DateFormat;
 import java.util.Date;

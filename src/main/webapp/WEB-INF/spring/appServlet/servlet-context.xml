@@ -3,7 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
@@ -21,13 +23,13 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="it.company.shop.controller" />
+	<context:component-scan base-package="it.company.noname.controller"/>
 	
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="defaultEncoding" value="utf-8"/>
 		<beans:property name="maxUploadSize" value="10485760"/><!-- 모든파일 크기제한 10MB = 1024*1024*10 = 10,485,760 byte -->
 		<beans:property name="maxUploadSizePerFile" value="2097152"/><!-- 파일한개당 크기제한 2MB = 1024*1024*2 = 2,097,152 byte -->
-		<beans:property name="uploadTempDir" value="file:/E:/upload/temp"/>
+		<beans:property name="uploadTempDir" value="file:/C:/upload/temp"/>
 		<beans:property name="maxInMemorySize" value="10485760"/><!-- 10MB -->
 	</beans:bean>
 	
