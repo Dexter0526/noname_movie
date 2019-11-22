@@ -7,6 +7,9 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.List;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Service;
 
 import it.company.noname.domain.MovieRequestVO;
@@ -39,16 +42,19 @@ public class movieServiceImpl implements movieService {
             BufferedReader br;
             if(responseCode==200) { // 정상 호출
                 br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-           
             } else {  // 에러 발생
                 br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-
             }
+            
+//            JSONParser jsonParser = new JSONParser();
+//            JSONObject jsonObject =(JSONObject) jsonParser.parse(br);
+//            JSONArray jsonArray =(JSONArray) jsonObject.get("items");
+            
             
             String inputLine;
             StringBuffer response = new StringBuffer();
             while ((inputLine = br.readLine()) != null) {
-                //response.append(inputLine);
+                response.append(inputLine);
                 System.out.println("inputLine: " + inputLine);
             }
             br.close();

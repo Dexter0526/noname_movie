@@ -27,6 +27,6 @@ public class movieController {
 		
 		service.searchMovie(movieRequestVO);
 		
-	} // movielist get
+	} // searchMovie get
 	
 } // movieController class
