@@ -5,6 +5,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.json.simple.JSONArray;
@@ -20,6 +23,8 @@ public class movieServiceImpl implements movieService {
 
 	@Override
 	public List<MovieVO> searchMovie(MovieRequestVO movieRequestVO) {
+		List<MovieVO> list = new ArrayList<MovieVO>();
+		
 		String clientId = "uPskKJg54rV3rzvngAkc";//애플리케이션 클라이언트 아이디값";
         String clientSecret = "2tSw5c0pdS";//애플리케이션 클라이언트 시크릿값";
         try {
@@ -29,9 +34,7 @@ public class movieServiceImpl implements movieService {
             String genre = (movieRequestVO.getGenre() != null ? "&genre=" + movieRequestVO.getGenre() : "");
             String country = (movieRequestVO.getCountry() != null ? "&country=" + movieRequestVO.getCountry() : "");
             
-            
             String apiURL = "https://openapi.naver.com/v1/search/movie?query="+ text + amount + pageNum + genre + country; // json 결과
-            System.out.println("apiURL : " + apiURL);
             
             URL url = new URL(apiURL);
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
@@ -46,24 +49,34 @@ public class movieServiceImpl implements movieService {
                 br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
             }
             
-//            JSONParser jsonParser = new JSONParser();
-//            JSONObject jsonObject =(JSONObject) jsonParser.parse(br);
-//            JSONArray jsonArray =(JSONArray) jsonObject.get("items");
+            JSONParser jsonParser = new JSONParser();
+            JSONObject jsonObject =(JSONObject) jsonParser.parse(br);
+            JSONArray jsonArray =(JSONArray) jsonObject.get("items");
+            //System.out.println("jsonArray : " + jsonArray);
+
+            Iterator<JSONObject> iter = jsonArray.iterator();
             
-            
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-            while ((inputLine = br.readLine()) != null) {
-                response.append(inputLine);
-                System.out.println("inputLine: " + inputLine);
+            while (iter.hasNext()) {
+                JSONObject rowObject =(JSONObject) iter.next();
+                
+                MovieVO movieVO = new MovieVO();
+                movieVO.setTitle((((String) rowObject.get("title")).replace("<b>", "")).replace("</b>", ""));	
+                movieVO.setLink((String) rowObject.get("link"));
+                movieVO.setImage((String) rowObject.get("image"));
+                movieVO.setSubtitle((((String) rowObject.get("subtitle")).replace("<b>", "")).replace("</b>", ""));
+                movieVO.setPubDate((String) rowObject.get("pubDate"));
+                movieVO.setDirector((String) rowObject.get("director"));
+                movieVO.setActor((String) rowObject.get("actor"));
+                movieVO.setUserRating((String) rowObject.get("userRating"));
+                
+                list.add(movieVO);
             }
-            br.close();
-            System.out.println(response.toString());
+            
         } catch (Exception e) {
             System.out.println(e);
         }
 
-		return null;
+		return list;
 	}
 
 }

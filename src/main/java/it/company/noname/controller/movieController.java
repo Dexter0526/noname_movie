@@ -1,6 +1,7 @@
 package it.company.noname.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,15 +19,13 @@ public class movieController {
 	private movieService service;
 	
 	@GetMapping("/all")
-	public void searchMovie(MovieRequestVO movieRequestVO) {
+	public String searchMovie(MovieRequestVO movieRequestVO, Model model, String query) {
 		
-		movieRequestVO.setQuery("w");
-		movieRequestVO.setDisplay(10);
-		movieRequestVO.setStart(1);
-		movieRequestVO.setCountry("KR");
+		// 뷰에서 사용할 정보
+		model.addAttribute("movieList", service.searchMovie(movieRequestVO));
+		model.addAttribute("query", query);
 		
-		service.searchMovie(movieRequestVO);
-		
+		return "movie/movieList";
 	} // searchMovie get
 	
 } // movieController class
