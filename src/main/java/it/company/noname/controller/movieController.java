@@ -28,4 +28,7 @@ public class movieController {
 		return "movie/movieList";
 	} // searchMovie get
 	
+	
+	
+	
 } // movieController class
