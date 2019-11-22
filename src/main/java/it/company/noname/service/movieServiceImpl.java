@@ -25,8 +25,8 @@ public class movieServiceImpl implements movieService {
 	public List<MovieVO> searchMovie(MovieRequestVO movieRequestVO) {
 		List<MovieVO> list = new ArrayList<MovieVO>();
 		
-		String clientId = "uPskKJg54rV3rzvngAkc";//애플리케이션 클라이언트 아이디값";
-        String clientSecret = "2tSw5c0pdS";//애플리케이션 클라이언트 시크릿값";
+		String clientId = "";//애플리케이션 클라이언트 아이디값";
+        String clientSecret = "";//애플리케이션 클라이언트 시크릿값";
         try {
             String text = URLEncoder.encode(movieRequestVO.getQuery(), "UTF-8");
             String amount = (movieRequestVO.getDisplay() != null ? "&display=" + movieRequestVO.getDisplay() : "");
