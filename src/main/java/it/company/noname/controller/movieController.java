@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 package it.company.noname.controller;
 
 import org.springframework.stereotype.Controller;
@@ -31,7 +29,4 @@ public class movieController {
 	} // searchMovie get
 	
 	
-	
-	
 } // movieController class
->>>>>>> a3a151b972be1cefe4fd85711770a264624ceb3b
