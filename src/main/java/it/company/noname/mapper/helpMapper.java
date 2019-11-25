@@ -9,4 +9,5 @@ import it.company.noname.domain.helpboardVO;
 public interface helpMapper {
 	
 	public List<helpboardVO> getBoard();
+	
 }
