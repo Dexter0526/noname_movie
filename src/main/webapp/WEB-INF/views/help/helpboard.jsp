@@ -43,10 +43,8 @@
 <script>
 	$("tr.aq").click(function() {
 		$(".c").css('transform', 'rotate(0deg)')//화살표 방향 바뀜
-		$("tr.aa").stop().slideUp(0);
 		$(this).next().toggle(200);//slideToggle 업다운 자동
-		$(this).find(".c").css('transform', 'rotate(180deg)'); //find는 손자에서도 찾는다.
-	});
+		});
 
 	function moreList() {
 		$

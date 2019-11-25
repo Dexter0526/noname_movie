@@ -10,7 +10,7 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping(value="/help/*")
 public class helpController {
 	
-	@RequestMapping("helpboard")
+	@RequestMapping("help")
 	public String help() {
 		return "help/helpboard";
 	}

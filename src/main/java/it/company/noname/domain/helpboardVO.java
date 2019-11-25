@@ -6,6 +6,4 @@ import lombok.Data;
 public class helpboardVO {
 	private int bno;
 	private String con;
-	
-	
 }
