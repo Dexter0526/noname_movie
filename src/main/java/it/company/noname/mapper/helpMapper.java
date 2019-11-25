@@ -14,8 +14,7 @@ import it.company.noname.service.Helpboard;
 
 public interface helpMapper {
 	
-	
-	
+	public List<helpboardVO> getBoard();
 //	@RequestMapping("helpboard")
 //    public static String boardList(Model model) throws Exception {
 //	List<helpboardVO> list = helpboard.boardList(); // list 변수에 결과 값을 담는다

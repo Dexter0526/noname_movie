@@ -5,16 +5,19 @@ import lombok.Data;
 @Data
 public class helpboardVO {
 	private int bno;
-	private String con;
+	private String content;
 	private String subject;
 
 
 	public helpboardVO(){}
-	public helpboardVO(int bno, String con, String subject) {
+
+
+	public helpboardVO(int bno, String content, String subject) {
 		super();
 		this.bno = bno;
-		this.con = con;
+		this.content = content;
 		this.subject = subject;
 	}
+	
 
 }
