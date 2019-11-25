@@ -4,9 +4,9 @@ SYSTEM
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="it.company.noname.mapper.helpMapper">
+ 
  <select id="boardList" resultType="it.company.noname.domain.helpBoardVO">
- <![CDATA[
- select * from help.helpboard where bno>0]]>
+ 	select * from help.helpboard where ?>0
  </select>
  
  

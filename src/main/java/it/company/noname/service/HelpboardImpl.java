@@ -19,6 +19,6 @@ public class HelpboardImpl implements helpService {
 	
 	 @Override
 	    public List<helpboardVO> boardList() throws Exception {
-	        return sqlSession.selectList("board.boardList"); 
+	        return sqlSession.selectList("help.helpboard"); 
 	 }
 }
