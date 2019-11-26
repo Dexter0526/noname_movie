@@ -6,10 +6,8 @@ SYSTEM
  <mapper namespace="it.company.noname.mapper.helpMapper">
  
 <select id="getBoards" resultType="helpboardVO">
-		SELECT * 
-		FROM help.helpboard
-		where #{bno}>0
-</select>
+SELECT * 
+FROM help.helpboard</select>
  
  
  </mapper>

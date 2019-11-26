@@ -6,7 +6,7 @@ import lombok.Data;
 public class helpboardVO {
 	private int bno;
 	private String content;
-	private String subject;
+	private String title;
 	private String content2;
-	private String subject2;
-}
+	private String title2;
+	}
