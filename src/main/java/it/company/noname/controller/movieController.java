@@ -8,9 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.company.noname.domain.MovieCommentVO;
 import it.company.noname.domain.MovieRequestVO;
 import it.company.noname.domain.MovieVO;
 import it.company.noname.service.movieService;
@@ -37,15 +39,33 @@ public class movieController {
 	
 	
 	@GetMapping("/content")
-	public String content(@RequestParam("title") String title, Model model) {
-		
-		log.info(title);
+	public String content(MovieVO movieVO, Model model) {
 		
 		// 뷰에서 사용할 정보
-		model.addAttribute("movie", service.getMovie(title));
+		model.addAttribute("movie", movieVO);
 		
 		return "movie/content";
-	} // content
+	} // content get
+	
+	
+	@PostMapping("/commentWrite")
+	public String commentWrite(String comment, MovieCommentVO movieCommentVO) {
+		
+		movieCommentVO.setEmail("aaa@naver.com");
+		movieCommentVO.setMovieCode("446212");
+		movieCommentVO.setContent(comment);
+		movieCommentVO.setLike("0");
+		movieCommentVO.setUserRating("10");
+		
+		log.info("movieCommentVO : " + movieCommentVO);
+		
+		service.insertComment(movieCommentVO);
+		
+		
+		
+		return "redirect:/content";
+	} // commentWrite post
+	
 	
 	
 	

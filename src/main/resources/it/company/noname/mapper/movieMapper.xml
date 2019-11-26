@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+SYSTEM
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="it.company.noname.mapper.movieMapper">
+ 
+	 <insert id="insertComment">
+	 	INSERT INTO brooks.moviecomment (email, content, reg_date, movie_code, like, user_rating)
+	 	VALUES(#{email}, #{content}, current_timestamp, #{movieCode}, #{like}, #{userRating})
+	 </insert>
+ </mapper>
