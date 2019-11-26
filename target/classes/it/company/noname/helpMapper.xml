@@ -5,9 +5,10 @@ SYSTEM
  
  <mapper namespace="it.company.noname.mapper.helpMapper">
  
-<select id="getBoard" resultType="helpboardVO">
+<select id="getBoards" resultType="helpboardVO">
 		SELECT * 
-		FROM help.helpboard 
+		FROM help.helpboard
+		where #{bno}>0
 </select>
  
  

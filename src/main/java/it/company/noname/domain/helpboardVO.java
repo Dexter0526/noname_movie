@@ -7,17 +7,6 @@ public class helpboardVO {
 	private int bno;
 	private String content;
 	private String subject;
-
-
-	public helpboardVO(){}
-
-
-	public helpboardVO(int bno, String content, String subject) {
-		super();
-		this.bno = bno;
-		this.content = content;
-		this.subject = subject;
-	}
-	
-
+	private String content2;
+	private String subject2;
 }
