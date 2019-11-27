@@ -10,6 +10,8 @@
 	<typeAliases>
 		<package name="it.company.noname.domain"/>
 	</typeAliases>
-	
+	<mappers>
+    <mapper resource="it/company/noname/helpMapper.xml"/>
+</mappers>
 	
 </configuration>

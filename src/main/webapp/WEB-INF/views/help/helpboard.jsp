@@ -21,26 +21,20 @@
 
 	<table id="notice">
 	 <c:forEach var="board" items="${boardList}">
-		  <tr onclick="location.href='/board/content?num=${board.num};">
-		  	<td>${board.num}</td>
+		  <tr>
+		  	<td>${board.bno}</td>
 		  	<td class="left">
-		  		<c:if test="${board.reLev gt 0}"><%-- 답글일때 --%>
-		  			<c:set var="level" value="${board.reLev * 10}" />
-		  			</c:if>
-		  		${board.subject}
-		  	</td>
+		  		${board.title}</td>
+		  	</tr>
+		  	<tr>
 		  	<td>${board.content}</td>
-		   </c:forEach>
+		  </tr> </c:forEach>
 		  </table>
 			
 			
-			<tr id='addbtn'>
 				<td colspan="5"><divclass="btns"> <a
 						href="javascript:moreList();" class="btn btn-primary">더보기</a>
-					</div></td>
-			</tr>
-		</tbody>
-	</table>
+			</table>
 </body>
 
 </html>
