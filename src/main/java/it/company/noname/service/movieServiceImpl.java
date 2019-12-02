@@ -15,19 +15,24 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.company.noname.domain.MovieCommentVO;
 import it.company.noname.domain.MovieRequestVO;
 import it.company.noname.domain.MovieVO;
+import it.company.noname.mapper.movieMapper;
 import lombok.Setter;
 
 @Service
 public class movieServiceImpl implements movieService {
 
+	@Autowired
+	private movieMapper mapper;
+	
 	@Override
 	public List<MovieVO> searchMovie(MovieRequestVO movieRequestVO) {
 		List<MovieVO> list = new ArrayList<MovieVO>();
 		
-		String clientId = "";//애플리케이션 클라이언트 아이디값";
-        String clientSecret = "";//애플리케이션 클라이언트 시크릿값";
+		String clientId = "uPskKJg54rV3rzvngAkc";//애플리케이션 클라이언트 아이디값";
+        String clientSecret = "2tSw5c0pdS";//애플리케이션 클라이언트 시크릿값";
         try {
             String text = URLEncoder.encode(movieRequestVO.getQuery(), "UTF-8");
             String amount = (movieRequestVO.getDisplay() != null ? "&display=" + movieRequestVO.getDisplay() : "");
@@ -78,68 +83,25 @@ public class movieServiceImpl implements movieService {
         }
 
 		return list;
-	}
+	} // searchMovie
 
 	
 	@Override
-	public MovieVO getMovie(String title) {
-		MovieVO movieVO = new MovieVO();
+	public void insertComment(MovieCommentVO movieCommentVO) {
+		mapper.insertComment(movieCommentVO);
 		
-		System.out.println("title : " + title);
-		String clientId = "";//애플리케이션 클라이언트 아이디값";
-        String clientSecret = "";//애플리케이션 클라이언트 시크릿값";
-        try {
-            String text = URLEncoder.encode(title, "UTF-8");
-            
-            String apiURL = "https://openapi.naver.com/v1/search/movie?query="+ text; // json 결과
-            System.out.println("apiURL : " + apiURL);
-            
-            URL url = new URL(apiURL);
-            
-            HttpURLConnection con = (HttpURLConnection)url.openConnection();
-            con.setRequestMethod("GET");
-            con.setRequestProperty("X-Naver-Client-Id", clientId);
-            con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
-            int responseCode = con.getResponseCode();
-            BufferedReader br;
-            
-            if(responseCode==200) { // 정상 호출
-                br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            } else {  // 에러 발생
-                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-            }
+	} // insertComment 
 
-            JSONParser jsonParser = new JSONParser();
-            JSONObject jsonObject =(JSONObject) jsonParser.parse(br);
-            JSONArray jsonArray =(JSONArray) jsonObject.get("items");
-            System.out.println("jsonArray : " + jsonArray);
 
-            Iterator<JSONObject> iter = jsonArray.iterator();
-            
-             
-            JSONObject rowObject =(JSONObject) iter.next();
-            
-            movieVO.setTitle((((String) rowObject.get("title")).replace("<b>", "")).replace("</b>", ""));	
-            movieVO.setLink((String) rowObject.get("link"));
-            movieVO.setImage((String) rowObject.get("image"));
-            movieVO.setSubtitle((((String) rowObject.get("subtitle")).replace("<b>", "")).replace("</b>", ""));
-            movieVO.setPubDate((String) rowObject.get("pubDate"));
-            movieVO.setDirector((String) rowObject.get("director"));
-            movieVO.setActor((String) rowObject.get("actor"));
-            movieVO.setUserRating((String) rowObject.get("userRating"));
-            
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-		return movieVO;
-	}
-
-	
-	
+	@Override
+	public List<MovieCommentVO> getComments(String title) {
+		List<MovieCommentVO> list = mapper.getComments(title);
+		
+		return list;
+	} // getComments
 
 	
 	
 	
-	
+
 } // movieServiceImpl 

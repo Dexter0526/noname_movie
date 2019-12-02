@@ -5,7 +5,18 @@ SYSTEM
  <mapper namespace="it.company.noname.mapper.movieMapper">
  
 	 <insert id="insertComment">
-	 	INSERT INTO brooks.moviecomment (email, content, reg_date, movie_code, like, user_rating)
-	 	VALUES(#{email}, #{content}, current_timestamp, #{movieCode}, #{like}, #{userRating})
+	 	INSERT INTO brooks.moviecomment (email, content, reg_date, movie_name, likecount, user_rating)
+	 	VALUES(#{email}, #{content}, current_timestamp, #{movieName}, #{likecount}, #{userRating})
 	 </insert>
+	 
+	 <select id="getComments" resultType="MovieCommentVO">
+	 	SELECT *
+	 	FROM moviecomment
+	 	WHERE movie_name = #{title};
+	 </select>
+	 
+	 
+	 
+	 
+	 
  </mapper>
