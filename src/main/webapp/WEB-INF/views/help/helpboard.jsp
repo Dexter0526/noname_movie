@@ -30,11 +30,8 @@
 		  	<td>${board.content}</td>
 		  </tr> </c:forEach>
 		  </table>
-			
-			
-				<td colspan="5"><divclass="btns"> <a
-						href="javascript:moreList();" class="btn btn-primary">더보기</a>
-			</table>
+
+				
 </body>
 
 </html>
