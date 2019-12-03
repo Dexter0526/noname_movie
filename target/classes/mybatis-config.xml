@@ -8,8 +8,8 @@
 	</settings>
 	
 	<typeAliases>
-		<package name="it.company.shop.domain"/>
+		<package name="it.company.noname.domain"/>
 	</typeAliases>
-	
+
 	
 </configuration>
