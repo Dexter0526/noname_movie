@@ -7,6 +7,6 @@ public class helpboardVO {
 	private int bno;
 	private String content;
 	private String title;
-	private String content2;
-	private String title2;
+	private String faqcontent;
+	private String faqtitle;
 	}
