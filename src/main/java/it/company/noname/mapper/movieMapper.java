@@ -21,4 +21,6 @@ public interface movieMapper {
 	// 후기 한개 수정
 	public void updateComment(MovieCommentVO vo);
 	
+	public void insertSearchData(String search);
+	
 } // movieMapper

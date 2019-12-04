@@ -120,6 +120,9 @@ public class movieServiceImpl implements movieService {
 				e.printStackTrace();
 			}
 		}
+		
+		mapper.insertSearchData(query);
+		
 	} // searchData
 	
 

@@ -51,16 +51,8 @@ public class movieController {
 	@PostMapping("/commentWrite")
 	public String commentWrite(String content, MovieVO movieVO, MovieCommentVO movieCommentVO, Model model) {
 		
-<<<<<<< HEAD
-		movieCommentVO.setEmail("aaa@naver.com");
-		movieCommentVO.setMovieCode("446212");
-		movieCommentVO.setContent(comment);
-		movieCommentVO.setLike("0");
-		movieCommentVO.setUserRating("10");
-		
 		log.info("movieCommentVO : " + movieCommentVO);
 
-=======
 		movieCommentVO.setEmail("bbb@naver.com"); // 등록된 닉네임 JOIN해서 가져오기
 		movieCommentVO.setMovieName(movieVO.getTitle());
 		movieCommentVO.setLikecount("0");
@@ -73,7 +65,6 @@ public class movieController {
 		List<MovieCommentVO> commentList = service.getComments(movieVO.getTitle());
 		
 		model.addAttribute("commentList", commentList);
->>>>>>> godgnb/master
 		
 		return "movie/content";
 	} // commentWrite post
