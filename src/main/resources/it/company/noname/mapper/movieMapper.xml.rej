@@ -1,0 +1,6 @@
+diff a/src/main/resources/it/company/noname/mapper/movieMapper.xml b/src/main/resources/it/company/noname/mapper/movieMapper.xml	(rejected hunks)
+@@ -7,3 +6,2 @@
+-	 <select id="getComments" resultType="MovieCommentVO">
+\ No newline at end of file
+ package it.company.noname.mapper;
+ 
