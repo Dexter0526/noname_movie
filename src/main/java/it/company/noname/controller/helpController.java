@@ -17,9 +17,6 @@ import it.company.noname.domain.helpboardVO;
 import it.company.noname.service.helpService;
 import lombok.extern.log4j.Log4j;
 
-
-
-
 @Log4j
 @Controller
 @RequestMapping("/help/*")
@@ -27,21 +24,24 @@ public class helpController {
 
 	@Autowired
 	private helpService helpservice;
-@GetMapping("/board")
-public String list(Model model){
-	log.info("write() 호출됨...");
-	log.warn("주의 메시지");
-	List<helpboardVO> boardList = helpservice.getBoards();
-	model.addAttribute("boardList", boardList);
-	return "help/helpboard";
-}
-@Autowired
-private JavaMailSender mailSender;
-@GetMapping("/email")
-public String email() {
-	return "help/helpemail";
-}
-//mailSending 코드
+	private JavaMailSender mailSender;	
+	
+	
+	@GetMapping("/board")
+	public String list(Model model){
+		log.info("write() 호출됨...");
+		log.warn("주의 메시지");
+		List<helpboardVO> boardList = helpservice.getBoards();
+		model.addAttribute("boardList", boardList);
+		return "help/helpboard";
+	}
+
+	@GetMapping("/email")
+	public String email() {
+		return "help/helpemail";
+	}
+	
+	//mailSending 코드
 	@RequestMapping(value = "mailSending.do")
 	public String mailSending(HttpServletRequest request) {
 
@@ -52,8 +52,7 @@ public String email() {
 
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
-			MimeMessageHelper messageHelper = new MimeMessageHelper(message,
-					true, "UTF-8");
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
 
 			messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
 			messageHelper.setTo(tomail); // 받는사람 이메일
@@ -67,4 +66,6 @@ public String email() {
 
 		return "home";
 	}
+	
+	
 }

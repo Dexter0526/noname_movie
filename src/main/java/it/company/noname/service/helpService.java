@@ -20,11 +20,12 @@ public class helpService {
 	
 	@Autowired
 	private helpMapper helpmapper;
-
+	public JavaMailSender mailSender;
+	
 	public List<helpboardVO> getBoards() {
 		List<helpboardVO> list = helpmapper.getBoards();
 		return list;
 	} 
-	public JavaMailSender mailSender;
+
 	
 }

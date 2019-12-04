@@ -11,8 +11,8 @@ public class MovieCommentVO {
 	private String email;
 	private String content;
 	private Date regDate;
-	private String movieCode;
-	private String like;
+	private String movieName;
+	private String likecount;
 	private String userRating;
 	
 } // MovieCommentVO class
