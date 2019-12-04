@@ -2,9 +2,10 @@
 <!DOCTYPE mapper
 SYSTEM
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
- <mapper namespace="it.company.noname.mapper.helpMapper">
- <select id="getBoards" resultType="helpboardVO">
-SELECT * 
-FROM help.helpboard</select>
- </mapper>
+
+<mapper namespace="it.company.noname.mapper.helpMapper">
+	<select id="getBoards" resultType="helpboardVO">
+		SELECT *
+		FROM helpboard
+	</select>
+</mapper>

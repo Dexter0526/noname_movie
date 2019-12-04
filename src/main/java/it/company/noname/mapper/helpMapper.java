@@ -12,4 +12,6 @@ public interface helpMapper{
 	public List<helpboardVO> getBoards();
 		// TODO Auto-generated method stub
 	public JavaMailSender mailSender();
+	
+	
 }
