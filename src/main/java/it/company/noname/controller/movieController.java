@@ -2,6 +2,8 @@ package it.company.noname.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import it.company.noname.domain.MovieCommentVO;
-import it.company.noname.domain.MovieRequestVO;
 import it.company.noname.domain.MovieVO;
 import it.company.noname.service.movieService;
 import lombok.AllArgsConstructor;
@@ -23,29 +24,25 @@ public class movieController {
 	
 	private movieService service;
 	
-	@GetMapping("/all")
-	public String searchMovie(MovieRequestVO movieRequestVO, Model model, String query) {
+	@GetMapping("/main")
+	public String searchMovie() {
 		
-		// 뷰에서 사용할 정보
-		model.addAttribute("movieList", service.searchMovie(movieRequestVO));
-		model.addAttribute("query", query);
-		
-		return "movie/movieList";
+		return "movie/list";
 	} // searchMovie get
 	
 	
 	@GetMapping("/content")
-	public String content(MovieVO movieVO, Model model) {
-		
-		log.info(movieVO.getTitle());
+	public String content(MovieVO vo, Model model, HttpSession session) {
 		
 		// 전체 후기 가져오기
-		List<MovieCommentVO> commentList = service.getComments(movieVO.getTitle());
+		List<MovieCommentVO> commentList = service.getComments(vo.getTitle());
 		
+		session.setAttribute("email", "bbb@naver.com");
+		session.setAttribute("movie", vo);
 		
 		// 뷰에서 사용할 정보
-		model.addAttribute("movie", movieVO);
 		model.addAttribute("commentList", commentList);
+		
 		
 		return "movie/content";
 	} // content get
@@ -65,13 +62,54 @@ public class movieController {
 		// 전체 후기 가져오기
 		List<MovieCommentVO> commentList = service.getComments(movieVO.getTitle());
 		
-		model.addAttribute("movie", movieVO);
 		model.addAttribute("commentList", commentList);
 		
 		return "movie/content";
 	} // commentWrite post
 	
 	
+	@GetMapping("/commentDelete")
+	public String commentDelete(int num, String title, Model model) {
+		// 후기 한개 삭제
+		service.deleteComment(num);
+		
+		// 전체 후기 가져오기
+		List<MovieCommentVO> commentList = service.getComments(title);
+		
+		model.addAttribute("commentList", commentList);
+		
+		return "movie/content";
+	} // commentDelete get
+	
+	
+	@GetMapping("/commentUpdateForm")
+	public String commentUpdateForm(int num, String title, Model model) {
+		// 후기 한개 가져오기
+		MovieCommentVO vo = service.getComment(num);
+		
+		// 전체 후기 가져오기
+		List<MovieCommentVO> commentList = service.getComments(title);
+		
+		
+		model.addAttribute("commentList", commentList);
+		model.addAttribute("moviecomment", vo);
+		
+		return "movie/commentUpdate";
+	} // commentUpdateForm get
+	
+	
+	@PostMapping("/commentUpdate")
+	public String commentUpdate(MovieCommentVO vo, Model model) {
+		// 후기 한개 수정하기
+		service.updateComment(vo);
+
+		// 전체 후기 가져오기
+		List<MovieCommentVO> commentList = service.getComments(vo.getMovieName());
+		
+		model.addAttribute("commentList", commentList);
+		
+		return "movie/content";
+	} // commentUpdate post
 	
 	
 } // movieController class

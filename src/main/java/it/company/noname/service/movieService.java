@@ -12,10 +12,18 @@ import it.company.noname.domain.MovieVO;
 public interface movieService {
 	
 	
-    public List<MovieVO> searchMovie(MovieRequestVO movieRequestVO); // searchMovie
+    public List<MovieVO> searchMovie(MovieRequestVO vo); // searchMovie
     
-    public void insertComment(MovieCommentVO movieCommentVO);
+    public void searchData(String query);
     
     public List<MovieCommentVO> getComments(String title);
+    
+    public MovieCommentVO getComment(int num);
+    
+    public void insertComment(MovieCommentVO vo);
+    
+    public void deleteComment(int num);
+    
+    public void updateComment(MovieCommentVO vo);
     
 } // movieService interface

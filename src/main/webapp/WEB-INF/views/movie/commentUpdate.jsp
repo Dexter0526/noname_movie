@@ -10,7 +10,7 @@
 </head>
 <body>
 	
-	<form action="/movie/commentWrite" method="post">
+	<form action="/movie/commentUpdate" method="post">
 		<div id="movie-info">
 			이미지: <img name="image" src="${movie.image}"><br>
 					<input type="hidden" name="image" value="${movie.image}">
@@ -25,8 +25,10 @@
 	
 		<span>평가하기</span>
 		<div id="comment-write">
-			<textarea name="content" rows="7" cols="65" required></textarea>
-			<input type="submit" value="작성하기">
+			<input type="hidden" name="num" value="${moviecomment.num}">
+			<input type="hidden" name="movieName" value="${moviecomment.movieName}">
+			<textarea name="content" rows="7" cols="65" required>${moviecomment.content}</textarea>
+			<input type="submit" value="수정하기">
 		</div>
 	</form>
 		<div>
@@ -52,8 +54,5 @@
 				</c:forEach>
 			</table>
 		</div>
-	
-
-
 </body>
 </html>
