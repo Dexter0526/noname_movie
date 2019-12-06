@@ -31,10 +31,10 @@ public class movieRestController {
 	public ResponseEntity<Map<String, Object>> searchMovie(MovieRequestVO vo, @PathVariable("query") String query) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		service.searchData(query);
-		
 		List<MovieVO> movieList = service.searchMovie(vo);
 		map.put("movieList", movieList);
+
+		service.searchData(query);
 		
 		return new ResponseEntity<>(map, HttpStatus.OK);
 	}
