@@ -10,25 +10,97 @@
 <meta charset="utf-8">
 <title>고객센터에 오신 것을 환영합니다.</title>
 <script>
-function(a) {
-	<c:set var="number" value="1" scope="application" />;}
-function(b) {
-	<c:set var="number" value="2" scope="application" />;}
-function(c) {
-	<c:set var="number" value="3" scope="application" />;}
-function(d) {
-	<c:set var="number" value="4" scope="application" />;}
-function(e) {
-	<c:set var="number" value="5" scope="application" />;}
-function(f) {
-	<c:set var="number" value="6" scope="application" />;};
-</script>
+	function LayerView(a) {
+		a.style.display = "inline";
+		b.style.display = "none";
+		c.style.display = "none";
+		d.style.display = "none";
+		e.style.display = "none";
+		f.style.display = "none";
+		g.style.display = "none";
+		h.style.display = "none";
+	}
+	function LayerView(b) {
+		a.style.display = "none";
+		b.style.display = "inline";
+		c.style.display = "none";
+		d.style.display = "none";
+		e.style.display = "none";
+		f.style.display = "none";
+		g.style.display = "none";
+		h.style.display = "none";
 
+	}
+	function LayerView(c) {
+		a.style.display = "none";
+		b.style.display = "none";
+		c.style.display = "inline";
+		d.style.display = "none";
+		e.style.display = "none";
+		f.style.display = "none";
+		g.style.display = "none";
+		h.style.display = "none";
+
+	}
+	function LayerView(d) {
+		a.style.display = "none";
+		b.style.display = "none";
+		c.style.display = "none";
+		d.style.display = "inline";
+		e.style.display = "none";
+		f.style.display = "none";
+		g.style.display = "none";
+		h.style.display = "none";
+
+	}
+	function LayerView(e) {
+		a.style.display = "none";
+		b.style.display = "none";
+		c.style.display = "none";
+		d.style.display = "none";
+		e.style.display = "inline";
+		f.style.display = "none";
+		g.style.display = "none";
+		h.style.display = "none";
+	}
+	function LayerView(f) {
+		a.style.display = "none";
+		b.style.display = "none";
+		c.style.display = "none";
+		d.style.display = "none";
+		e.style.display = "none";
+		f.style.display = "inline";
+		g.style.display = "none";
+		h.style.display = "none";
+
+	}
+	function LayerView(g) {
+		a.style.display = "none";
+		b.style.display = "none";
+		c.style.display = "none";
+		d.style.display = "none";
+		e.style.display = "none";
+		f.style.display = "none";
+		g.style.display = "inline";
+		h.style.display = "none";
+
+	}
+	function LayerView(h) {
+		a.style.display = "none";
+		b.style.display = "none";
+		c.style.display = "none";
+		d.style.display = "none";
+		e.style.display = "none";
+		f.style.display = "none";
+		g.style.display = "none";
+		h.style.display = "inline";
+
+	}
+</script>
 </head>
 <body>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
 	<h2>공지사항</h2>
 	<%
 		
@@ -45,21 +117,20 @@ function(f) {
 			</tr>
 		</c:forEach>
 	</table>
-	
-	
+
+
 	<table border="1">
-		<th><input type="button" value="자주 묻는 질문" class="dup" onclick="function(a)"></th>
-		<th onclick="function(b)">해지/환불</th>
-		<th onclick="function(c)">이용권/쿠폰</th>
-		<th onclick="function(d)">로그인/계정 관리</th>
-		<th onclick="function(e)">콘텐츠</th>
-		<th onclick="function(f)">재생 문의</th>
-		<th onclick="function(g)">서비스 문의</th>
+		<th onclick="LayerView(a)">자주 묻는 질문</th>
+		<th onclick="LayerView(b)">자주 묻는 질문</th>
+		<th onclick="LayerView(c)">해지/환불</th>
+		<th onclick="LayerView(d)">이용권/쿠폰</th>
+		<th onclick="LayerView(e)">로그인/계정 관리</th>
+		<th onclick="LayerView(f)">콘텐츠</th>
+		<th onclick="LayerView(g)">재생 문의</th>
+		<th onclick="LayerView(h)">서비스 문의</th>
 	</table>
-	<c:set var="number" value="1" scope="application" />
-	
-	<c:if test="${number == 1}">
-	<table id="a" >
+
+	<table id="a" style="display:none;">
 		<c:forEach var="board" items="${boardList}">
 			<tr>
 				<td>${board.faqtitle}</td>
@@ -68,9 +139,9 @@ function(f) {
 				<td>${board.faqcontent}</td>
 			</tr>
 		</c:forEach>
-	</table></c:if>
-	<c:if test="${number == 2}">
-	<table id="b">
+	</table>
+
+	<table id="b" style="display:none;">
 		<c:forEach var="board" items="${boardList}">
 			<tr>
 				<td>${board.paytitle}</td>
@@ -79,9 +150,9 @@ function(f) {
 				<td>${board.paycontent}</td>
 			</tr>
 		</c:forEach>
-	</table></c:if>
-	<c:if test="${number == 3}">
-	<table id="c" >
+	</table>
+
+	<table id="c" style="display:none;">
 		<c:forEach var="board" items="${boardList}">
 			<tr>
 				<td>${board.retiretitle}</td>
@@ -90,9 +161,9 @@ function(f) {
 				<td>${board.retirecontent}</td>
 			</tr>
 		</c:forEach>
-	</table></c:if>
-	<c:if test="${number == 4}">
-<table id="d">
+	</table>
+
+	<table id="d" style="display:none;">
 		<c:forEach var="board" items="${boardList}">
 			<tr>
 				<td>${board.usetitle}</td>
@@ -101,7 +172,48 @@ function(f) {
 				<td>${board.usecontent}</td>
 			</tr>
 		</c:forEach>
-	</table></c:if>
+	</table>
+	
+	<table id="e" style="display:none;">
+		<c:forEach var="board" items="${boardList}">
+			<tr>
+				<td>${board.logintitle}</td>
+			</tr>
+			<tr>
+				<td>${board.logincontent}</td>
+			</tr>
+		</c:forEach>
+	</table>
+	<table id="f" style="display:none;">
+		<c:forEach var="board" items="${boardList}">
+			<tr>
+				<td>${board.contenttitle}</td>
+			</tr>
+			<tr>
+				<td>${board.contentcontent}</td>
+			</tr>
+		</c:forEach>
+	</table>
+	<table id="g" style="display:none;">
+		<c:forEach var="board" items="${boardList}">
+			<tr>
+				<td>${board.playtitle}</td>
+			</tr>
+			<tr>
+				<td>${board.playcontent}</td>
+			</tr>
+		</c:forEach>
+	</table>
+	<table id="h" style="display:none;">
+		<c:forEach var="board" items="${boardList}">
+			<tr>
+				<td>${board.servicetitle}</td>
+			</tr>
+			<tr>
+				<td>${board.servicecontent}</td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>
 
