@@ -23,7 +23,7 @@
     </logger>
 	
 	<!-- Application Loggers -->
-	<logger name="com.company.project">
+	<logger name="it.company.noname">
 		<level value="info" />
 	</logger>
 	
