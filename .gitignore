@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 target/m2e-wtp/web-resources/META-INF/maven/it.company/shop/pom.properties
 target/m2e-wtp/web-resources/META-INF/maven/it.company/noname/pom.properties
@@ -10,3 +11,6 @@ target/m2e-wtp/web-resources/META-INF/maven/it.company/shop/pom.properties
 target/m2e-wtp/web-resources/META-INF/maven/it.company/shop/pom.properties
 target/classes/it/company/noname/service/mapService.class
 target/classes/it/company/noname/controller/mapController.class
+=======
+target\m2e-wtp\web-resources\META-INF\maven\it.company\noname\pom.properties
+>>>>>>> 3d0ba367b67ac1a974d8556fbd2c960a29337bb5
