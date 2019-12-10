@@ -45,11 +45,15 @@ public class helpController {
 	@RequestMapping(value = "mailSending.do")
 	public String mailSending(HttpServletRequest request) {
 
+		
+		
 		String setfrom = "nonameMovie";
 		String tomail = request.getParameter("tomail"); // 받는 사람 이메일
-		String title = request.getParameter("title"); // 제목
+		String title1 = "안녕하십니까? ";// 제목
+		String title2 = "님! noname Movie에서 보내드립니다.";
 		String content = request.getParameter("content"); // 내용
-
+		String name = request.getParameter("name");
+		String title= title1+name+title2;
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
 			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
