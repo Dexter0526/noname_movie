@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<!DOCTYPE log4j:configuration PUBLIC
+  "-//APACHE//DTD LOG4J 1.2//EN" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
 	<!-- Appenders -->
@@ -10,8 +11,19 @@
 		</layout>
 	</appender>
 	
+	<appender name="console-infolog" class="org.apache.log4j.ConsoleAppender">
+          <layout class="org.apache.log4j.PatternLayout">
+              <param name="ConversionPattern" value="%d %5p %m%n"/>
+          </layout>  
+    </appender>
+    
+	<logger name="com" additivity="false">
+        <level value="debug" />
+        <appender-ref ref="console"/>
+    </logger>
+	
 	<!-- Application Loggers -->
-	<logger name="it.company.noname.controller">
+	<logger name="com.company.project">
 		<level value="info" />
 	</logger>
 	
@@ -31,11 +43,22 @@
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
-
+	
+	<!-- log4jdbc Loggers -->
+	<logger name="jdbc.audit">
+		<level value="warn"/>
+	</logger>
+	<logger name="jdbc.resultset">
+		<level value="warn"/>
+	</logger>
+	<logger name="jdbc.connection">
+		<level value="warn"/>
+	</logger>
+	
 	<!-- Root Logger -->
 	<root>
-		<priority value="info" />
-		<appender-ref ref="console" />
-	</root>
+        <priority value="debug" />
+        <appender-ref ref="console" />
+    </root>
 	
 </log4j:configuration>

@@ -10,6 +10,6 @@
 	<typeAliases>
 		<package name="it.company.noname.domain"/>
 	</typeAliases>
-	
+
 	
 </configuration>
