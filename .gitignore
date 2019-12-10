@@ -7,3 +7,6 @@ target/classes/it/company/noname/controller/mapController.class
 target/classes/it/company/noname/controller/mapController.class
 target/classes/it/company/noname/service/mapService.class
 target/m2e-wtp/web-resources/META-INF/maven/it.company/shop/pom.properties
+target/m2e-wtp/web-resources/META-INF/maven/it.company/shop/pom.properties
+target/classes/it/company/noname/service/mapService.class
+target/classes/it/company/noname/controller/mapController.class
