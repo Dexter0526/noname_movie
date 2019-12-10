@@ -10,92 +10,13 @@
 <meta charset="utf-8">
 <title>고객센터에 오신 것을 환영합니다.</title>
 <script>
-	function LayerView(a) {
-		a.style.display = "inline";
-		b.style.display = "none";
-		c.style.display = "none";
-		d.style.display = "none";
-		e.style.display = "none";
-		f.style.display = "none";
-		g.style.display = "none";
-		h.style.display = "none";
-	}
-	function LayerView(b) {
-		a.style.display = "none";
-		b.style.display = "inline";
-		c.style.display = "none";
-		d.style.display = "none";
-		e.style.display = "none";
-		f.style.display = "none";
-		g.style.display = "none";
-		h.style.display = "none";
-
-	}
-	function LayerView(c) {
-		a.style.display = "none";
-		b.style.display = "none";
-		c.style.display = "inline";
-		d.style.display = "none";
-		e.style.display = "none";
-		f.style.display = "none";
-		g.style.display = "none";
-		h.style.display = "none";
-
-	}
-	function LayerView(d) {
-		a.style.display = "none";
-		b.style.display = "none";
-		c.style.display = "none";
-		d.style.display = "inline";
-		e.style.display = "none";
-		f.style.display = "none";
-		g.style.display = "none";
-		h.style.display = "none";
-
-	}
-	function LayerView(e) {
-		a.style.display = "none";
-		b.style.display = "none";
-		c.style.display = "none";
-		d.style.display = "none";
-		e.style.display = "inline";
-		f.style.display = "none";
-		g.style.display = "none";
-		h.style.display = "none";
-	}
-	function LayerView(f) {
-		a.style.display = "none";
-		b.style.display = "none";
-		c.style.display = "none";
-		d.style.display = "none";
-		e.style.display = "none";
-		f.style.display = "inline";
-		g.style.display = "none";
-		h.style.display = "none";
-
-	}
-	function LayerView(g) {
-		a.style.display = "none";
-		b.style.display = "none";
-		c.style.display = "none";
-		d.style.display = "none";
-		e.style.display = "none";
-		f.style.display = "none";
-		g.style.display = "inline";
-		h.style.display = "none";
-
-	}
-	function LayerView(h) {
-		a.style.display = "none";
-		b.style.display = "none";
-		c.style.display = "none";
-		d.style.display = "none";
-		e.style.display = "none";
-		f.style.display = "none";
-		g.style.display = "none";
-		h.style.display = "inline";
-
-	}
+	function LayerView(obj) {
+		let arr = document.querySelectorAll('.tbl');
+		for (let item of arr) {
+			item.style.display = "none";
+		}		
+		obj.style.display = "inline";
+		}
 </script>
 </head>
 <body>
@@ -110,7 +31,7 @@
 		<c:forEach var="board" items="${boardList}">
 			<tr>
 				<td>${board.bno}</td>
-				<td class="left">${board.title}</td>
+				<td>${board.title}</td>
 			</tr>
 			<tr>
 				<td>${board.content}</td>
@@ -120,17 +41,19 @@
 
 
 	<table border="1">
-		<th onclick="LayerView(a)">자주 묻는 질문</th>
-		<th onclick="LayerView(b)">자주 묻는 질문</th>
-		<th onclick="LayerView(c)">해지/환불</th>
-		<th onclick="LayerView(d)">이용권/쿠폰</th>
-		<th onclick="LayerView(e)">로그인/계정 관리</th>
-		<th onclick="LayerView(f)">콘텐츠</th>
-		<th onclick="LayerView(g)">재생 문의</th>
-		<th onclick="LayerView(h)">서비스 문의</th>
+		<tr>
+			<th onclick="LayerView(a)">자주 묻는 질문</th>
+			<th onclick="LayerView(b)">자주 묻는 질문</th>
+			<th onclick="LayerView(c)">해지/환불</th>
+			<th onclick="LayerView(d)">이용권/쿠폰</th>
+			<th onclick="LayerView(e)">로그인/계정 관리</th>
+			<th onclick="LayerView(f)">콘텐츠</th>
+			<th onclick="LayerView(g)">재생 문의</th>
+			<th onclick="LayerView(h)">서비스 문의</th>
+		</tr>
 	</table>
 
-	<table id="a" style="display:none;">
+	<table id="a" class="tbl" style="display: none;">
 		<c:forEach var="board" items="${boardList}">
 			<tr>
 				<td>${board.faqtitle}</td>
@@ -141,7 +64,7 @@
 		</c:forEach>
 	</table>
 
-	<table id="b" style="display:none;">
+	<table id="b" class="tbl" style="display: none;">
 		<c:forEach var="board" items="${boardList}">
 			<tr>
 				<td>${board.paytitle}</td>
@@ -152,7 +75,7 @@
 		</c:forEach>
 	</table>
 
-	<table id="c" style="display:none;">
+	<table id="c" class="tbl" style="display: none;">
 		<c:forEach var="board" items="${boardList}">
 			<tr>
 				<td>${board.retiretitle}</td>
@@ -163,7 +86,7 @@
 		</c:forEach>
 	</table>
 
-	<table id="d" style="display:none;">
+	<table id="d" class="tbl" style="display: none;">
 		<c:forEach var="board" items="${boardList}">
 			<tr>
 				<td>${board.usetitle}</td>
@@ -173,8 +96,8 @@
 			</tr>
 		</c:forEach>
 	</table>
-	
-	<table id="e" style="display:none;">
+
+	<table id="e" class="tbl" style="display: none;">
 		<c:forEach var="board" items="${boardList}">
 			<tr>
 				<td>${board.logintitle}</td>
@@ -184,7 +107,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<table id="f" style="display:none;">
+	<table id="f" class="tbl" style="display: none;">
 		<c:forEach var="board" items="${boardList}">
 			<tr>
 				<td>${board.contenttitle}</td>
@@ -194,7 +117,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<table id="g" style="display:none;">
+	<table id="g" class="tbl" style="display: none;">
 		<c:forEach var="board" items="${boardList}">
 			<tr>
 				<td>${board.playtitle}</td>
@@ -204,7 +127,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<table id="h" style="display:none;">
+	<table id="h" class="tbl" style="display: none;">
 		<c:forEach var="board" items="${boardList}">
 			<tr>
 				<td>${board.servicetitle}</td>
