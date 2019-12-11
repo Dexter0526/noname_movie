@@ -113,6 +113,10 @@ setInterval(function(){
 	});
 },10000);
 
+<div class="box-header with-border" id="address">
+</div>	
+
+document.getElementById("address").innerHTML="<h3>" + data.address + "</h3>";
 
 
 </script>
