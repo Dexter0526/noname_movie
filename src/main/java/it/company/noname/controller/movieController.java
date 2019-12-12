@@ -43,7 +43,7 @@ public class movieController {
 		// 뷰에서 사용할 정보
 		model.addAttribute("commentList", commentList);
 		
-		
+		 
 		return "movie/content";
 	} // content get
 	
