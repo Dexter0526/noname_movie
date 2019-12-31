@@ -66,17 +66,14 @@
 					<p class="lead">Cover is a one-page template for building
 						simple and beautiful home pages. Download, edit the text, and add
 						your own fullscreen background photo to make it your own.</p>
-					<p class="lead">
-						<button type="button" data-toggle="modal" data-target="#log" class = "btn btn-lg btn-default">로그인</button>  <button type="button" data-toggle="modal" data-target="#join" class = "btn btn-lg btn-default">회원가입</button>
-					</p>
 					<c:if test = "${email eq null }">
 					<p class="lead">
 						<button type="button" data-toggle="modal" data-target="#log" class = "btn btn-lg btn-default">로그인</button>  <button type="button" data-toggle="modal" data-target="#join" class = "btn btn-lg btn-default">회원가입</button>
 					</p>
 					</c:if>
-					<c:if test = "${email not null}">
+					<c:if test = "${email ne null}">
 					<p class = "lead">
-						<button type="button" class = "btn btn-lg btn-default">로그아웃</button>
+						<button type="button" class = "btn btn-lg btn-default" onclick="location.href = member/logout">로그아웃</button>
 					</p>
 					</c:if>
 				</div>

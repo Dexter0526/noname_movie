@@ -56,7 +56,8 @@
 $("#inputEmail").blur(function(){
 	var email = $('#inputEmail').val();
 	$.ajax({
-		url : '${pageContext.request.contextPath}/member/emailCheck?email='+ email,
+		url : '/member/emailCheck?email='+ email,
+		contentType : "application/json",
 		type : 'get',
 		dataType : "json",
 		success : function(data) {						
@@ -68,7 +69,7 @@ $("#inputEmail").blur(function(){
 				$("#frm_submit").attr("disabled", true);
 			} else {
 	
-				if(email == ""){
+				if(email == ''){
 	
 					$('#email_check').text('아이디를 입력해주세요 :)');
 					$('#email_check').css('color', 'red');

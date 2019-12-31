@@ -27,11 +27,9 @@
 				
 				<div class="modal-body">
 				
-			이메일<input type="email" name="email" id="inputEmail" class="form-control"
+			이메일<input type="email" name="email" class="form-control"
 				placeholder="Email address" required>
-			<div class="check_font" id="email_check"></div>
-			비밀번호<input type="password" name="password" id="inputPassword"
-				class="form-control" placeholder="Password" required> 
+			비밀번호<input type="password" name="password" class="form-control" placeholder="Password" required> 
 				
 				</div>
 				

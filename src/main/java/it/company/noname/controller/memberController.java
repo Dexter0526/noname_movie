@@ -28,16 +28,22 @@ public class memberController {
 		return "main";
 	}
 	
-	@PostMapping("log")
+	@PostMapping("/log")
 	public String log(String email, String password, HttpSession session) {
 		MemberVO memberVO = service.getMember(email);
-		
-		if(password == memberVO.getPassword()) {
+		if(password.equals(memberVO.getPassword())) {
 			session.setAttribute("email", email);
 			return "movie/list";
 		}else {
 			return "main";
 		}
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		
+		return "main";
 	}
 	
 	@PostMapping("delete")
