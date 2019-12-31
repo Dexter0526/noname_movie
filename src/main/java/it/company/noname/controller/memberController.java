@@ -33,10 +33,8 @@ public class memberController {
 		MemberVO memberVO = service.getMember(email);
 		if(password.equals(memberVO.getPassword())) {
 			session.setAttribute("email", email);
-			return "movie/list";
-		}else {
-			return "main";
 		}
+			return "main";
 	}
 	
 	@GetMapping("/logout")
@@ -54,10 +52,8 @@ public class memberController {
 		if(password == memberVO.getPassword()) {
 			service.deleteMember(email);
 			session.invalidate();
-			return "main";
-		}else {
-			return "main";
 		}
+			return "main";
 	}
 	
 	@PostMapping("update")
