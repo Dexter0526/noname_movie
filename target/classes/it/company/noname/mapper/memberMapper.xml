@@ -4,4 +4,27 @@ SYSTEM
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="it.company.noname.mapper.memberMapper">
  
+ 	<select id = "getMember" resultType="MemberVO">
+ 		select * from brooks.member where email = #{email}
+ 	</select>
+ 	
+ 	<select id = "getMemberList" resultType="MemberVO">
+ 		select * from brooks.member
+ 	</select>
+ 	
+ 	<insert id = "insertMember">
+ 		insert into brooks.member(email, name, password, image)
+ 		values(#{email}, #{name}, #{password}, #{image})
+ 	</insert>
+ 	
+ 	<delete id = "deleteMember">
+ 		delete from brooks.member where email = #{email}
+ 	</delete>
+ 	
+ 	<update id = "updateMember">
+ 		update brooks.member 
+ 		set name = #{name}, password = #{password}, image = #{image}
+ 		where email = #{email}
+ 	</update>
+ 	
  </mapper>
