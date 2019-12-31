@@ -69,6 +69,16 @@
 					<p class="lead">
 						<button type="button" data-toggle="modal" data-target="#log" class = "btn btn-lg btn-default">로그인</button>  <button type="button" data-toggle="modal" data-target="#join" class = "btn btn-lg btn-default">회원가입</button>
 					</p>
+					<c:if test = "${email eq null }">
+					<p class="lead">
+						<button type="button" data-toggle="modal" data-target="#log" class = "btn btn-lg btn-default">로그인</button>  <button type="button" data-toggle="modal" data-target="#join" class = "btn btn-lg btn-default">회원가입</button>
+					</p>
+					</c:if>
+					<c:if test = "${email not null}">
+					<p class = "lead">
+						<button type="button" class = "btn btn-lg btn-default">로그아웃</button>
+					</p>
+					</c:if>
 				</div>
 
 				<div class="mastfoot">
