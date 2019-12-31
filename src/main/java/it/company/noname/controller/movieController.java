@@ -51,6 +51,8 @@ public class movieController {
 	@PostMapping("/commentWrite")
 	public String commentWrite(String content, MovieVO movieVO, MovieCommentVO movieCommentVO, Model model) {
 		
+		log.info("movieCommentVO : " + movieCommentVO);
+
 		movieCommentVO.setEmail("bbb@naver.com"); // 등록된 닉네임 JOIN해서 가져오기
 		movieCommentVO.setMovieName(movieVO.getTitle());
 		movieCommentVO.setLikecount("0");
