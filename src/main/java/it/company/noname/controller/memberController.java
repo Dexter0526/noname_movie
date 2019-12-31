@@ -32,10 +32,13 @@ public class memberController {
 	public String log(String email, String password, HttpSession session) {
 		
 		MemberVO memberVO = service.getMember(email);
-		
+		log.info(password == memberVO.getPassword());
+		log.info(password);
+		log.info(memberVO.getPassword());
 		if(password == memberVO.getPassword()) {
 			session.setAttribute("email", email);
-			return "movie/list";
+			return "movie/list";			
+
 		}else {
 			return "main";
 		}

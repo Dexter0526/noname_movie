@@ -18,32 +18,27 @@ public class MemberServiceImpl implements memberService {
 	
 	@Override
 	public List<MemberVO> getMemberList() {
-		mapper.getMemberList();
-		return null;
+		return mapper.getMemberList();
 	}
 
 	@Override
 	public MemberVO getMember(String email) {
-		mapper.getMember(email);
-		return null;
+		return mapper.getMember(email);
 	}
 
 	@Override
 	public int insertMember(MemberVO memberVO) {
-		mapper.insertMember(memberVO);
-		return 0;
+		return mapper.insertMember(memberVO);
 	}
 
 	@Override
 	public int deleteMember(String email) {
-		mapper.deleteMember(email);
-		return 0;
+		return mapper.deleteMember(email);
 	}
 
 	@Override
 	public int updateMember(MemberVO memberVO) {
-		mapper.updateMember(memberVO);
-		return 0;
+		return mapper.updateMember(memberVO);
 	}
 
 }
