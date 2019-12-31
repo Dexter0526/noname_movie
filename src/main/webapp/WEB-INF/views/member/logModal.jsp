@@ -29,6 +29,10 @@
 				
 			이메일<input type="email" name="email" id="inputEmail" class="form-control"
 				placeholder="Email address" required>
+<<<<<<< HEAD
+=======
+			<div class="check_font" id="email_check"></div>
+>>>>>>> origin/master
 			비밀번호<input type="password" name="password" id="inputPassword"
 				class="form-control" placeholder="Password" required> 
 				
