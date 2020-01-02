@@ -36,10 +36,4 @@ public class mapController {
 		return "map/mapList";
 	}
 	
-	@GetMapping("/mapContent")
-	public String mapcontent(MapVO mapVO) {
-		
-
-		return null;
-	}
 }

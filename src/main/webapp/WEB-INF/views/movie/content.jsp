@@ -9,7 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+		<!-- head -->
+	<jsp:include page="../head.jsp"/>
 	
+	<div class="container">
 	<form action="/movie/commentWrite" method="post">
 		<div id="movie-info">
 			이미지: <img name="image" src="${movie.image}"><br>
@@ -52,7 +55,7 @@
 				</c:forEach>
 			</table>
 		</div>
-	
+	</div>
 
 
 </body>

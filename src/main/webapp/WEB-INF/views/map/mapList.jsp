@@ -8,25 +8,29 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/address/search">
-		<input id="query" name="query" placeholder="장소">
-		<input type="submit" value="영화관 검색">
-	</form>
+	<!-- head -->
+	<jsp:include page="../head.jsp"/>
 	
-	<table id = "table">
-	<c:forEach var="mapList" items="${mapList}">
-	<tr>
-			<td>${mapList.place_name}</td>
-			<td>${mapList.road_address_name}</td>
-			<td>${mapList.phone}</td>
-			<td style="display:none;">${mapList.x}</td>
-			<td style="display:none;">${mapList.y}</td>
-			<td style="display:none;">${mapList.id}</td>
-	</tr>
-	</c:forEach>
-	</table>
-	
-	<jsp:include page="map.jsp"/>
-	
+	<div class="container">
+		<form action="/address/search">
+			<input id="query" name="query" placeholder="장소">
+			<input type="submit" value="영화관 검색">
+		</form>
+		
+		<table id = "table">
+		<c:forEach var="mapList" items="${mapList}">
+		<tr>
+				<td>${mapList.place_name}</td>
+				<td>${mapList.road_address_name}</td>
+				<td>${mapList.phone}</td>
+				<td style="display:none;">${mapList.x}</td>
+				<td style="display:none;">${mapList.y}</td>
+				<td style="display:none;">${mapList.id}</td>
+		</tr>
+		</c:forEach>
+		</table>
+		
+		<jsp:include page="map.jsp"/>
+	</div>
 </body>
 </html>
