@@ -50,14 +50,16 @@
 							<ul class="nav masthead-nav">
 								<li class="active"><a href="#">Home</a></li>
 								<li><a href="/help/helpboard">고객센터</a></li>
-								<li></li>
+								<c:if test = "${email ne null}">
+									<li><a href="#" onclick="winOpen();">내정보</a></li>
+								</c:if>
 							</ul>
 						</nav>
 					</div>
 				</div>
 
 				<div class="inner cover">
-					<form action="/movie/all">
+					<form action="/movie/main">
 						<h1 class="cover-heading">
 							<input id="query" name="query" value="${query}" style="color:black">
 							<input type="submit" class = "btn btn-lg btn-default" value="영화검색">
@@ -66,14 +68,15 @@
 					<p class="lead">Cover is a one-page template for building
 						simple and beautiful home pages. Download, edit the text, and add
 						your own fullscreen background photo to make it your own.</p>
-					<c:if test = "${email eq null }">
+					<c:if test = "${email eq null}">
 					<p class="lead">
-						<button type="button" data-toggle="modal" data-target="#log" class = "btn btn-lg btn-default">로그인</button>  <button type="button" data-toggle="modal" data-target="#join" class = "btn btn-lg btn-default">회원가입</button>
+						<button type="button" data-toggle="modal" data-target="#log" class = "btn btn-lg btn-default">로그인</button>
+						<button type="button" data-toggle="modal" data-target="#join" class = "btn btn-lg btn-default">회원가입</button>
 					</p>
 					</c:if>
 					<c:if test = "${email ne null}">
 					<p class = "lead">
-						<button type="button" class = "btn btn-lg btn-default" onclick="location.href = member/logout">로그아웃</button>
+						<button type="button" class="btn btn-lg btn-default" onclick="location.href = '/member/logout'">로그아웃</button>
 					</p>
 					</c:if>
 				</div>
@@ -99,12 +102,14 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/ie10-viewport-bug-workaround.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/ie10-viewport-bug-workaround.js"></script>
+	<script>
+		function winOpen() {
+			var childWindow = window.open('/member/passwdCheckForm', '', 'width=400,height=300');
+		}
+	</script>
 </body>
 </html>

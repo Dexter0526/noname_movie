@@ -2,6 +2,7 @@ package it.company.noname.service;
 
 import java.util.List;
 
+import org.apache.tomcat.jni.Mmap;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,6 +40,24 @@ public class MemberServiceImpl implements memberService {
 	@Override
 	public int updateMember(MemberVO memberVO) {
 		return mapper.updateMember(memberVO);
+	}
+	
+	@Override
+	public int userCheck(String email, String password) {
+		int check = -1;
+		
+		MemberVO memberVO = mapper.getMember(email);
+		if (memberVO != null) {
+			if (password.equals(memberVO.getPassword())) {
+				check = 1;
+			} else {
+				check = 0;
+			}
+		} else {
+			check = -1;
+		}
+		
+		return check;
 	}
 
 }
