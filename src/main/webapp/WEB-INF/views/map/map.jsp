@@ -13,9 +13,9 @@
 	<div id="theaterCommentForm"></div>
 	<br>
 	<div id="theaterComment"></div>
-
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cc593c8c71c9e243a4e4f82864c90634"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 	<script>
 	$('#table tr').click(function(){
 		var tr = $(this);
@@ -30,8 +30,60 @@
 		console.log("id : " + id);
 		map(place_name, x, y);
 		mapCommentForm(place_name, id);
+		mapComment(id);
 		
 	})
+
+	$('#theaterCommentForm').on('click', 'input#insertComment', function(){
+		console.log("insert 실행");
+		var place_name = $('#place_name').val();
+		var content = $('#content').val();
+		var id = $('#id').val();
+		console.log(place_name + ' ' + content + ' ' + id); 
+		insertTheater(place_name, content, id);
+	})
+	
+	$('#theaterComment').on('click', 'input#deleteComment', function(){
+		console.log("delete 실행");
+		var deleteComment = $(this);
+		var tr = deleteComment.parent().parent();
+		var td = tr.children();
+		var num = td.eq(2).text();
+		var id = $('#id').val();
+		
+		console.log('num : '+num);
+		deleteTheater(num, id);
+	})
+	
+	$('#theaterComment').on('click', 'input#updateComment', function(){
+		var updateComment = $(this);
+		var tr = updateComment.parent().parent();
+		var td = tr.children();
+		var num = td.eq(2).text();
+		var place_name = $('#place_name').val();
+		var content = td.eq(1).text();
+		var id = td.eq(3).text();
+		console.log('id : '+id);
+		var str = "";
+		
+		str += '장소: ' + '<input type = "text" name = "place_name" id="place_name" value="' + place_name + '" readonly><br>';
+		str += '작성글: '+'<textarea rows="30" cols="30" name = "content" id = "content">'+content+'</textarea>';
+		str += '<input type = "hidden" name = "num" id = "num" value="'+ num + '"><br>';
+		str += '<input type = "hidden" name = "id" id = "id" value="'+ id + '"><br>';
+		str += '<input type = "button" id="updateTheater" value="수정">';
+		
+		$('#theaterCommentForm').html(str);
+	})
+	
+	$('#theaterCommentForm').on('click', 'input#updateTheater', function(){
+		console.log("update 실행");
+		var content = $('#content').val();
+		var num = $('#num').val();
+		var id = $('#id').val();
+		updateTheater(content, num, id);
+		
+		
+	})	
 	
 	function map(place_name, x, y){
 		var container = document.getElementById('map');
@@ -63,6 +115,8 @@
 	}
 	
 	function mapComment(id){
+		var email = '${email}';
+		
 		$.ajax({
 			url:"/map/commentList/"+id,
 			type:"get",
@@ -74,10 +128,18 @@
 				var str = "";
 				str += '<table>'
 				$.each(values, function(index, value){
-					str += '<tr>'
-					str += '<td>'+value.email+'</td>'
-					str += '<td>' + value.content + '</td>'
-					str += '</tr>'
+					str += '<tr>';
+					str += '<td>'+value.email+'</td>';
+					str += '<td>' + value.content + '</td>';
+					str += '<td style="display:none;">'+value.num+'</td>';
+					str += '<td style="display:none;">'+value.id+'</td>'
+					str += '<td>';
+					if (value.email == email) {
+						str += '<input type = "button" id="updateComment" value="수정">';
+						str += '<input type = "button" id="deleteComment" value="삭제">';
+					}	
+					str += '</td>';
+					str += '</tr>';
 				})
 				str += '</table>'
 				$('#theaterComment').html(str);
@@ -87,15 +149,53 @@
 	
 	function mapCommentForm(place_name, id){
 		var str = "";
-		str += '<form action = "/map/insertComment" method = "post">';
-		str += '장소: ' + '<input type = "text" name = "place_name" value="' + place_name + '"><br>';
-		str += '작성글: '+'<textarea rows="30" cols="30" name = "content"></textarea>';
-		str += '<input type = "hidden" name = "id" value="'+ id + '"><br>';
-		str += '<button type = "submit">등록</button>';
-		str += '</form>';
+		str += '장소: ' + '<input type = "text" name = "place_name" id="place_name" value="' + place_name + '" readonly><br>';
+		str += '작성글: '+'<textarea rows="30" cols="30" name = "content" id = "content"></textarea>';
+		str += '<input type = "hidden" name = "id" id = "id" value="'+ id + '"><br>';
+		str += '<input type = "button" id="insertComment" value="등록">';
 		
 		$('#theaterCommentForm').html(str);
 	}
+
+	function insertTheater(place_name, content, id){
+		console.log(place_name + ' ' + content + ' '+ id);
+		$.ajax({
+			url:"/map/insertComment/",
+			type:"post",
+			data:{place_name:place_name, content:content, id:id},
+			dataType: "json",
+			success: function (result) {
+				mapCommentForm(place_name, id);
+				mapComment(id);
+			}
+		});
+	}
+	function deleteTheater(num, id){
+		console.log(num + ' ' + id);
+		$.ajax({
+			url:"/map/deleteComment/"+num,
+			type:"get",
+			dataType: "json",
+			success: function (result) {
+				mapComment(id);
+			}
+		});
+	}
+	
+	function updateTheater(content, num, id){
+		var place_name = $('#place_name').val(); 
+		$.ajax({
+			url:"/map/updateComment/",
+			type:"post",
+			data:{content:content, num:num},
+			dataType: "json",
+			success: function (result) {
+				mapCommentForm(place_name, id);
+				mapComment(id);
+			}
+		});
+	}
+	
 	</script>
 </body>
 </html>

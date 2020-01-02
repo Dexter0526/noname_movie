@@ -2,6 +2,8 @@ package it.company.noname.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import it.company.noname.domain.theaterCommentVO;
 
 public interface theaterCommentMapper {
@@ -9,7 +11,7 @@ public interface theaterCommentMapper {
 	
 	public int insertComment(theaterCommentVO VO);
 	
-	public int updateComment(String content, int num);
+	public int updateComment(@Param("content") String content, @Param("num") int num);
 	
 	public int deleteComment(int num);
 }

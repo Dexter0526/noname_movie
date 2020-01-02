@@ -14,12 +14,12 @@ SYSTEM
 	</insert>
 	
 	<update id="updateComment">
-		update from brooks.theatercomment 
+		update brooks.theatercomment 
 		set content = #{content}
 		where num = #{num}
 	</update>
 	
 	<delete id="deleteComment">
-		delete brooks.theatercomment where num = #{num}
+		delete from brooks.theatercomment where num = #{num}
 	</delete>
 </mapper>
