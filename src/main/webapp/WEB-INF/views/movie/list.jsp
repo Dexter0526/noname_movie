@@ -14,7 +14,35 @@
 	</div>
 	
 	<div id="movie-info">
-	
+		<c:if test="${movieList ne null}">
+			<c:forEach var="movie" items="${movieList}">
+				<form action="/movie/content">
+					<table id="movie-list">
+						<tr>
+							<td rowspan="3">
+								<img name="image" id="image" src="${movie.image}">
+								<input type="hidden" name="image" value="${movie.image}">
+							</td>
+							<td>
+								<input type="submit" id="title" name="title" value="${movie.title}">
+								<input type="text" id="subtitle" name="subtitle" value="${movie.subtitle}">
+		 					</td>
+				 				<tr>
+							<td>
+								<input type="text" id="pubDate" name="pubDate" value="${movie.pubDate}">
+		 						<input type="text" id="director" name="director" value="${movie.director}">
+								<input type="text" id="actor" name="actor" value="${movie.actor}">
+							</td>
+						</tr>
+		 				<tr>
+		 					<td>
+								<input type="text" id="userRating" name="userRating" value="${movie.userRating}">
+		 					</td>
+						</tr>
+					</table>
+				</form>
+			</c:forEach>
+		</c:if>
 	</div>
 	
 		

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import it.company.noname.domain.MovieCommentVO;
+import it.company.noname.domain.MovieRequestVO;
 import it.company.noname.domain.MovieVO;
 import it.company.noname.service.movieService;
 import lombok.AllArgsConstructor;
@@ -25,7 +26,11 @@ public class movieController {
 	private movieService service;
 	
 	@GetMapping("/main")
-	public String searchMovie() {
+	public String searchMovie(String query, MovieRequestVO vo, Model model) {
+		List<MovieVO> movieList = service.searchMovie(vo);
+		model.addAttribute("movieList", movieList);
+
+		service.searchData(query);
 		
 		return "movie/list";
 	} // searchMovie get

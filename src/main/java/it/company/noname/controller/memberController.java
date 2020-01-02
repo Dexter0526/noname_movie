@@ -3,6 +3,7 @@ package it.company.noname.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,36 +29,52 @@ public class memberController {
 		return "main";
 	}
 	
-	@PostMapping("/log")
+	@PostMapping("log")
 	public String log(String email, String password, HttpSession session) {
-		MemberVO memberVO = service.getMember(email);
-		if(password.equals(memberVO.getPassword())) {
+		int check = service.userCheck(email, password);
+		
+		if (check == 1) {
 			session.setAttribute("email", email);
-			return "movie/list";
-		}else {
+			return "main";
+		} else {
 			return "main";
 		}
 	}
 	
-	@GetMapping("/logout")
+	@GetMapping("logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
 		
 		return "main";
 	}
 	
-	@PostMapping("delete")
-	public String delete(HttpSession session, String password) {
-		String email = (String) session.getAttribute("email");
+	@GetMapping("passwdCheckForm")
+	public String passwdCheckForm(HttpSession session,  Model model) {
+		String email =(String) session.getAttribute("email");
+		
+		model.addAttribute("email", email);
+		
+		return "member/passwdCheckForm";
+	}
+	
+	@GetMapping("myAccount")
+	public String myAccount(HttpSession session, Model model) {
+		String email =(String) session.getAttribute("email");
+		
 		MemberVO memberVO = service.getMember(email);
 		
-		if(password == memberVO.getPassword()) {
-			service.deleteMember(email);
-			session.invalidate();
-			return "main";
-		}else {
-			return "main";
-		}
+		model.addAttribute("member", memberVO);
+		
+		return "member/myAccount";
+	}
+	
+	@GetMapping("myAccountDelete")
+	public String myAccountDelete(HttpSession session) {
+		String email = (String) session.getAttribute("email");
+		
+		service.deleteMember(email);
+		session.invalidate();
+		return "main";
 	}
 	
 	@PostMapping("update")
@@ -66,4 +83,7 @@ public class memberController {
 		
 		return "main";
 	}
+	
+	
+	
 }
