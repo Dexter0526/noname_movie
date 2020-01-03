@@ -38,8 +38,8 @@
  3-1) open api(카카오)   
  3-2) 영화관별 평점(경도, 위도 기반)  
  3-3) 평점 CRUD  
- 3-4) ajax
- 3-5) REST ful
+ 3-4) ajax  
+ 3-5) REST ful  
  
  
  
