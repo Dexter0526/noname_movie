@@ -23,16 +23,19 @@
 			개봉일자: <input name="pubDate" value="${movie.pubDate}" readonly>
 			감독: <input name="director" value="${movie.director}" readonly>
 			출연배우: <input name="actor" value="${movie.actor}" readonly>
-			평점: <input name="userRating" value="${movie.userRating}" readonly><br>
+			네이버 평점: <input name="userRating" value="${movie.userRating}" readonly><br>
 		</div>
-	
+		<br>
 		<span>평가하기</span>
 		<div id="comment-write">
+			닉네임: <input type="text" id="" value="${email}" readonly>
+			별점: <input type="text" id="rating" name="rating"><br>
 			<textarea name="content" rows="7" cols="65" required></textarea>
 			<input type="submit" value="작성하기">
 		</div>
 	</form>
 		<div>
+			<br>
 			<table border="1">
 				<tr>
 					<th>닉네임</th>
@@ -45,7 +48,7 @@
 					</tr>
 					<tr>
 						<td>
-							<fmt:formatDate value="${commentlist.regDate}" pattern="yyyy.MM.dd hh:mm"/> / ${commentlist.likeCount} / ${commentlist.userRating}
+							<fmt:formatDate value="${commentlist.regDate}" pattern="yyyy.MM.dd hh:mm"/> / ${commentlist.likeCount} / ${commentlist.rating}
 							<c:if test="${commentlist.email eq email}">
 								<a href="/movie/commentDelete?num=${commentlist.num}&title=${commentlist.movieName}">삭제</a>
 								<a href="/movie/commentUpdateForm?num=${commentlist.num}&title=${commentlist.movieName}">수정</a>

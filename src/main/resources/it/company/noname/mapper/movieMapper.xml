@@ -17,8 +17,8 @@ SYSTEM
 	 </select>
 	 
 	 <insert id="insertComment">
-	 	INSERT INTO moviecomment (email, content, reg_date, movie_name, like_count, user_rating)
-	 	VALUES(#{email}, #{content}, current_timestamp, #{movieName}, #{likeCount}, #{userRating})
+	 	INSERT INTO moviecomment (email, content, reg_date, movie_name, like_count, rating)
+	 	VALUES(#{email}, #{content}, current_timestamp, #{movieName}, #{likeCount}, #{rating})
 	 </insert>
 	 
 	 <delete id="deleteComment">

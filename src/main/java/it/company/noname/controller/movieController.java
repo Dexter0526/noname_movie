@@ -39,6 +39,8 @@ public class movieController {
 	@GetMapping("/content")
 	public String content(MovieVO vo, Model model, HttpSession session) {
 		
+		String email =(String) session.getAttribute("email");
+		
 		// 전체 후기 가져오기
 		List<MovieCommentVO> commentList = service.getComments(vo.getTitle());
 		
