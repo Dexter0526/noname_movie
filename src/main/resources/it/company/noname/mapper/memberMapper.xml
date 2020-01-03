@@ -23,7 +23,7 @@ SYSTEM
  	
  	<update id = "updateMember">
  		update brooks.member 
- 		set name = #{name}, password = #{password}, image = #{image}
+ 		set name = #{name}, image = #{image}
  		where email = #{email}
  	</update>
  	

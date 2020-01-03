@@ -29,19 +29,19 @@
 								<input type="hidden" name="image" value="${movie.image}">
 							</td>
 							<td>
-								<input type="submit" id="title" name="title" value="${movie.title}">
-								<input type="text" id="subtitle" name="subtitle" value="${movie.subtitle}">
+								<input type="submit" id="title" name="title" value="${movie.title}" readonly>
+								<input type="text" id="subtitle" name="subtitle" value="${movie.subtitle}" readonly>
 		 					</td>
 				 				<tr>
 							<td>
-								<input type="text" id="pubDate" name="pubDate" value="${movie.pubDate}">
-		 						<input type="text" id="director" name="director" value="${movie.director}">
-								<input type="text" id="actor" name="actor" value="${movie.actor}">
+								<input type="text" id="pubDate" name="pubDate" value="${movie.pubDate}" readonly>
+		 						<input type="text" id="director" name="director" value="${movie.director}" readonly>
+								<input type="text" id="actor" name="actor" value="${movie.actor}" readonly>
 							</td>
 						</tr>
 		 				<tr>
 		 					<td>
-								<input type="text" id="userRating" name="userRating" value="${movie.userRating}">
+								<input type="text" id="userRating" name="userRating" value="${movie.userRating}" readonly>
 		 					</td>
 						</tr>
 					</table>
@@ -73,7 +73,7 @@ $('#btnSearch').click(function () {
 				+						'<input type="hidden" name="image" value="' + value.image + '">'
 				+					'</td>'
 				+					'<td>'
-				+						'<input type="submit" id="title" name="title" value="' + value.title + '">'
+				+						'<input type="submit" id="title" name="title" value="' + value.title + '" readonly>'
 				+						'<input type="hidden" id="subtitle" name="subtitle" value="' + value.subtitle + '">' + value.subtitle
 				+ 					'</td>'
   				+ 				'<tr>'

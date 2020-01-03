@@ -42,26 +42,25 @@ public class movieController {
 		// 전체 후기 가져오기
 		List<MovieCommentVO> commentList = service.getComments(vo.getTitle());
 		
-		session.setAttribute("email", "bbb@naver.com");
 		session.setAttribute("movie", vo);
 		
 		// 뷰에서 사용할 정보
 		model.addAttribute("commentList", commentList);
 		
-		 
 		return "movie/content";
 	} // content get
 	
 	
 	@PostMapping("/commentWrite")
-	public String commentWrite(String content, MovieVO movieVO, MovieCommentVO movieCommentVO, Model model) {
+	public String commentWrite(MovieVO movieVO, MovieCommentVO movieCommentVO,
+			Model model, HttpSession session) {
 		
 		log.info("movieCommentVO : " + movieCommentVO);
-
-		movieCommentVO.setEmail("bbb@naver.com"); // 등록된 닉네임 JOIN해서 가져오기
+		
+		String email =(String) session.getAttribute("email");
+		
 		movieCommentVO.setMovieName(movieVO.getTitle());
-		movieCommentVO.setLikecount("0");
-		movieCommentVO.setUserRating("9.2");
+		movieCommentVO.setEmail(email);
 		
 		// 후기 한개 등록
 		service.insertComment(movieCommentVO);
