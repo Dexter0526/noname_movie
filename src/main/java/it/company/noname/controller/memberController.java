@@ -77,8 +77,8 @@ public class memberController {
 		return "main";
 	}
 	
-	@PostMapping("update")
-	public String update(MemberVO memberVO) {
+	@PostMapping("myAccountUpdate")
+	public String myAccountUpdate(MemberVO memberVO) {
 		service.updateMember(memberVO);
 		
 		return "main";
