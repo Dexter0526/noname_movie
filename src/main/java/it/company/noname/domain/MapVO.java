@@ -5,28 +5,28 @@ import lombok.Data;
 @Data
 public class MapVO {
 
-	private String place_name;
-	private String road_address_name;
+	private String placeName;
+	private String roadAddressName;
 	private String id;
 	private String phone;
 	private String x;
 	private String y;
-	private String place_url;
+	private String placeUrl;
 	
 	
 	public MapVO() {
 	}
 	
-	public MapVO(String place_name, String road_address_name, String id, 
-			String phone, String x, String y, String place_url) {
+	public MapVO(String placeName, String roadAddressName, String id, 
+			String phone, String x, String y, String placeUrl) {
 		
-		this.place_name = place_name;
-		this.road_address_name = road_address_name;
+		this.placeName = placeName;
+		this.roadAddressName = roadAddressName;
 		this.id = id;
 		this.phone = phone;
 		this.x = x;
 		this.y = y;
-		this.place_url = place_url;
+		this.placeUrl = placeUrl;
 	}
 	
 } // MapVO class

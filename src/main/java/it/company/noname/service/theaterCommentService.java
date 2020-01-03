@@ -12,7 +12,10 @@ public interface theaterCommentService {
 	
 	public int insertComment(theaterCommentVO VO);
 	
-	public int updateComment(String content, int num);
+	public int updateComment(String content, int userRating, int num);
 	
 	public int deleteComment(int num);
+	
+	public int updateLikeCount(int num);
 }
+

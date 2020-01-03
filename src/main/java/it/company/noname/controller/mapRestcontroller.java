@@ -31,9 +31,8 @@ public class mapRestcontroller {
 	public ResponseEntity<Map<String, Object>> commentList(@PathVariable("id") int id){
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<theaterCommentVO> commentList = service.getCommentList(id);
-		log.info(commentList);
 		map.put("commentList", commentList);
-		
+		log.info(commentList);
 		return new ResponseEntity<>(map, HttpStatus.OK);
 	}
 	
@@ -53,10 +52,18 @@ public class mapRestcontroller {
 		return result;
 	}
 	@PostMapping(value="updateComment")
-	public int updateComment(String content, int num) {
+	public int updateComment(String content, int userRating, int num) {
 		int result = 0;
-		result = service.updateComment(content, num);
+		result = service.updateComment(content, userRating, num);
 		
+		return result;
+	}
+	
+	@GetMapping(value = "updateLikeCount/{num}")
+	public int updateLikeCount(@PathVariable("num") int num) {
+		log.info("updateLikeCount 실행");
+		int result = 0;
+		result = service.updateLikeCount(num);
 		return result;
 	}
 }

@@ -63,13 +63,13 @@ public class mapServiceImpl implements mapService {
 				JSONObject rowObject = (JSONObject) iter.next();
 				
 				MapVO mapVO = new MapVO();
-				mapVO.setPlace_name((String) rowObject.get("place_name"));
-				mapVO.setRoad_address_name((String) rowObject.get("road_address_name"));
+				mapVO.setPlaceName((String) rowObject.get("place_name"));
+				mapVO.setRoadAddressName((String) rowObject.get("road_address_name"));
 				mapVO.setId((String) rowObject.get("id"));
 				mapVO.setPhone((String) rowObject.get("phone"));
 				mapVO.setX((String) rowObject.get("x"));
 				mapVO.setY((String) rowObject.get("y"));
-				mapVO.setPlace_url((String) rowObject.get("place_url"));
+				mapVO.setPlaceUrl((String) rowObject.get("place_url"));
 				
 				
 			 list.add(mapVO);

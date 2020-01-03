@@ -11,7 +11,9 @@ public interface theaterCommentMapper {
 	
 	public int insertComment(theaterCommentVO VO);
 	
-	public int updateComment(@Param("content") String content, @Param("num") int num);
+	public int updateComment(@Param("content") String content, @Param("userRating") int userRating, @Param("num") int num);
 	
 	public int deleteComment(int num);
+	
+	public int updateLikeCount(int num);
 }

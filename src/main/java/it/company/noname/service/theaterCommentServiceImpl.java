@@ -29,15 +29,21 @@ public class theaterCommentServiceImpl implements theaterCommentService {
 	}
 
 	@Override
-	public int updateComment(String content, int num) {
+	public int updateComment(String content, int userRating, int num) {
 		// TODO Auto-generated method stub
-		return mapper.updateComment(content, num);
+		return mapper.updateComment(content, userRating, num);
 	}
 
 	@Override
 	public int deleteComment(int num) {
 		// TODO Auto-generated method stub
 		return mapper.deleteComment(num);
+	}
+	
+	@Override
+	public int updateLikeCount(int num) {
+		
+		return mapper.updateLikeCount(num);
 	}
 
 }

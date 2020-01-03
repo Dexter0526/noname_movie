@@ -20,27 +20,27 @@
 	$('#table tr').click(function(){
 		var tr = $(this);
 		var td = tr.children();
-		var place_name = td.eq(0).text();
+		var placeName = td.eq(0).text();
 		var x = td.eq(3).text();
 		var y = td.eq(4).text();
 		var id = td.eq(5).text();
 		
 		console.log("클릭한 Row의 모든 데이터 : "+tr.text());
-		console.log("place_name : " + place_name);
+		console.log("placeName : " + placeName);
 		console.log("id : " + id);
-		map(place_name, x, y);
-		mapCommentForm(place_name, id);
+		map(placeName, x, y);
+		mapCommentForm(placeName, id);
 		mapComment(id);
 		
 	})
 
 	$('#theaterCommentForm').on('click', 'input#insertComment', function(){
 		console.log("insert 실행");
-		var place_name = $('#place_name').val();
+		var placeName = $('#placeName').val();
 		var content = $('#content').val();
 		var id = $('#id').val();
-		console.log(place_name + ' ' + content + ' ' + id); 
-		insertTheater(place_name, content, id);
+		var userRating = $('#userRating').val();
+		insertTheater(placeName, content, id, userRating);
 	})
 	
 	$('#theaterComment').on('click', 'input#deleteComment', function(){
@@ -60,13 +60,15 @@
 		var tr = updateComment.parent().parent();
 		var td = tr.children();
 		var num = td.eq(2).text();
-		var place_name = $('#place_name').val();
+		var placeName = $('#placeName').val();
 		var content = td.eq(1).text();
 		var id = td.eq(3).text();
+		var userRating = td.eq(4).text();
 		console.log('id : '+id);
 		var str = "";
 		
-		str += '장소: ' + '<input type = "text" name = "place_name" id="place_name" value="' + place_name + '" readonly><br>';
+		str += '장소: ' + '<input type = "text" name = "placeName" id="placeName" value="' + placeName + '" readonly><br>';
+		str += '별점: ' + '<input type = "text" name = "userRating" id="userRating" value="'+userRating+'"><br>';
 		str += '작성글: '+'<textarea rows="30" cols="30" name = "content" id = "content">'+content+'</textarea>';
 		str += '<input type = "hidden" name = "num" id = "num" value="'+ num + '"><br>';
 		str += '<input type = "hidden" name = "id" id = "id" value="'+ id + '"><br>';
@@ -81,11 +83,23 @@
 		var num = $('#num').val();
 		var id = $('#id').val();
 		updateTheater(content, num, id);
+	})	
+	
+	$('#theaterComment').on('click', 'input#likeCount', function(){
+		var updateComment = $(this);
+		var tr = updateComment.parent().parent();
+		var td = tr.children();
+		var num = td.eq(2).text();
+		var placeName = $('#placeName').val();
+		var content = td.eq(1).text();
+		var id = td.eq(3).text();
+		var userRating = td.eq(4).text();
 		
+		likeCount(num, id);
 		
 	})	
 	
-	function map(place_name, x, y){
+	function map(placeName, x, y){
 		var container = document.getElementById('map');
 		var options = {
 			center : new kakao.maps.LatLng(y, x),
@@ -101,7 +115,7 @@
 		});
 		
 		marker.setMap(map);
-		var iwContent = '<div style="padding:5px;">' + place_name + '</div>';
+		var iwContent = '<div style="padding:5px;">' + placeName + '</div>';
 	    iwPosition = new kakao.maps.LatLng(y, x); //인포윈도우 표시 위치입니다
 
 		// 인포윈도우를 생성합니다
@@ -126,18 +140,22 @@
 				console.log(result);
 				values = result.commentList;
 				var str = "";
-				str += '<table>'
+				str += '<table border = "1">';
+				str += '<tr>';
+				str += '<td>이메일</td><td>작성 내용</td><td>별점</td><td>추천</td>';
 				$.each(values, function(index, value){
 					str += '<tr>';
 					str += '<td>'+value.email+'</td>';
 					str += '<td>' + value.content + '</td>';
 					str += '<td style="display:none;">'+value.num+'</td>';
-					str += '<td style="display:none;">'+value.id+'</td>'
+					str += '<td style="display:none;">'+value.id+'</td>';
+					str += '<td>'+value.userRating+'</td>';
+					str += '<td><input type = "button" id="likeCount" name="likeCount" value = "'+value.likecount+'"</td>';
 					str += '<td>';
 					if (value.email == email) {
 						str += '<input type = "button" id="updateComment" value="수정">';
 						str += '<input type = "button" id="deleteComment" value="삭제">';
-					}	
+					}
 					str += '</td>';
 					str += '</tr>';
 				})
@@ -147,9 +165,10 @@
 		});
 	}
 	
-	function mapCommentForm(place_name, id){
+	function mapCommentForm(placeName, id){
 		var str = "";
-		str += '장소: ' + '<input type = "text" name = "place_name" id="place_name" value="' + place_name + '" readonly><br>';
+		str += '장소: ' + '<input type = "text" name = "placeName" id="placeName" value="' + placeName + '" readonly>';
+		str += '별점: ' + '<input type = "text" name = "userRating" id="userRating" value="0"><br>';
 		str += '작성글: '+'<textarea rows="30" cols="30" name = "content" id = "content"></textarea>';
 		str += '<input type = "hidden" name = "id" id = "id" value="'+ id + '"><br>';
 		str += '<input type = "button" id="insertComment" value="등록">';
@@ -157,15 +176,14 @@
 		$('#theaterCommentForm').html(str);
 	}
 
-	function insertTheater(place_name, content, id){
-		console.log(place_name + ' ' + content + ' '+ id);
+	function insertTheater(placeName, content, id, userRating){
 		$.ajax({
 			url:"/map/insertComment/",
 			type:"post",
-			data:{place_name:place_name, content:content, id:id},
+			data:{placeName:placeName, content:content, id:id, userRating:userRating},
 			dataType: "json",
 			success: function (result) {
-				mapCommentForm(place_name, id);
+				mapCommentForm(placeName, id);
 				mapComment(id);
 			}
 		});
@@ -182,15 +200,26 @@
 		});
 	}
 	
-	function updateTheater(content, num, id){
-		var place_name = $('#place_name').val(); 
+	function updateTheater(content, num, id, userRating){
+		var placeName = $('#placeName').val(); 
 		$.ajax({
 			url:"/map/updateComment/",
 			type:"post",
-			data:{content:content, num:num},
+			data:{content:content, num:num, userRating:userRating},
 			dataType: "json",
 			success: function (result) {
-				mapCommentForm(place_name, id);
+				mapCommentForm(placeName, id);
+				mapComment(id);
+			}
+		});
+	}
+	
+	function likeCount(num, id){
+		$.ajax({
+			url:"/map/updateLikeCount/"+num,
+			type:"get",
+			dataType: "json",
+			success: function(result){
 				mapComment(id);
 			}
 		});

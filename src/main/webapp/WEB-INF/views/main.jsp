@@ -62,7 +62,7 @@
 				<div class="inner cover">
 					<form action="/movie/main">
 						<h1 class="cover-heading">
-							<input id="query" name="query" value="${query}" style="color:black">
+							<input id="query" name="query" value="${query}" style="color:black" placeholder="영화 제목*">
 							<input type="submit" class = "btn btn-lg btn-default" value="영화검색">
 						</h1>
 					</form>

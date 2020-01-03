@@ -15,7 +15,7 @@
 	
 	<div>
 		<input id="query" name="query" value="${query}" placeholder="제목*">
-		<input type="button" id="btnSearch" value="영화검색">
+		<input type="button" id="btnSearch" value="검색">
 	</div>
 	
 	<div id="movie-info">

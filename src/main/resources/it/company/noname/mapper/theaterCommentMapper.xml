@@ -9,17 +9,24 @@ SYSTEM
 	</select>
 	
 	<insert id="insertComment">
-		insert into brooks.theatercomment(place_name, id, email, content) 
-		values(#{place_name}, #{id}, #{email}, #{content})
+		insert into brooks.theatercomment(place_name, id, email, content, user_rating, reg_date) 
+		values(#{placeName}, #{id}, #{email}, #{content}, #{userRating}, current_timestamp)
 	</insert>
 	
 	<update id="updateComment">
 		update brooks.theatercomment 
-		set content = #{content}
+		set content = #{content}, user_rating = #{userRating}
 		where num = #{num}
 	</update>
 	
 	<delete id="deleteComment">
 		delete from brooks.theatercomment where num = #{num}
 	</delete>
+	
+	<update id = "updateLikeCount">
+		update brooks.theatercomment 
+		set likecount = likecount + 1 
+		where num = #{num} 
+	</update>
+	
 </mapper>
