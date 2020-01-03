@@ -14,8 +14,9 @@
 		<input type="button" name="btnDelete" value="삭제">
 	</form>
 	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>	
 <script>
-$('#btnDelete').click(function () {
+$('#btnDelete').onclick(function () {
 	var check = confirm("탈퇴하시겠습니까?");
 	
 	if (check == true) {
