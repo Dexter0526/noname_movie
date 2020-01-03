@@ -12,7 +12,7 @@
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
 
-<title>Cover Template for Bootstrap</title>
+<title></title>
 
 <!-- Bootstrap core CSS -->
 <link
@@ -48,8 +48,9 @@
 						<h3 class="masthead-brand">Noname Movie</h3>
 						<nav>
 							<ul class="nav masthead-nav">
-								<li class="active"><a href="#">Home</a></li>
-								<li><a href="/help/helpboard">고객센터</a></li>
+								<li class="active"><a href="main">Home</a></li>
+								<li><a href="/movie/main">영화 검색</a></li>
+								<li><a href="/address/search">영화관 검색</a></li>
 								<c:if test = "${email ne null}">
 									<li><a href="#" onclick="winOpen();">내정보</a></li>
 								</c:if>
