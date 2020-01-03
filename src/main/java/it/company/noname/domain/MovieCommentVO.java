@@ -13,6 +13,6 @@ public class MovieCommentVO {
 	private Date regDate;
 	private String movieName;
 	private int likeCount;
-	private String userRating;
+	private String rating;
 	
 } // MovieCommentVO class
