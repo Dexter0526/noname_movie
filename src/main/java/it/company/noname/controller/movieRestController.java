@@ -39,13 +39,6 @@ public class movieRestController {
 		return new ResponseEntity<>(map, HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/likeUp/{email}")
-	public String likeUp() {
-		
-		
-		
-		return null;
-	}
-	
+
 	
 } // movieRestController class
