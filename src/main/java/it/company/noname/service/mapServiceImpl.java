@@ -69,6 +69,7 @@ public class mapServiceImpl implements mapService {
 				mapVO.setPhone((String) rowObject.get("phone"));
 				mapVO.setX((String) rowObject.get("x"));
 				mapVO.setY((String) rowObject.get("y"));
+				mapVO.setPlace_url((String) rowObject.get("place_url"));
 				
 				
 			 list.add(mapVO);
@@ -77,7 +78,6 @@ public class mapServiceImpl implements mapService {
 
 			
 		}catch (Exception e) {
-			System.out.println("지도보이기" + e.getMessage());
 			e.printStackTrace();
 		}
 

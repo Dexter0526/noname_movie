@@ -4,6 +4,7 @@ package it.company.noname.controller;
 import java.util.*;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,30 +16,24 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 @AllArgsConstructor
-@RequestMapping(value= "address")
+@RequestMapping(value= "/address/*")
 public class mapController {
 
 	private mapService mapService;
 	
-	@GetMapping("/map")
-	public String searchMap(String query, Integer page) {
+	@GetMapping("/search")
+	public String searchMap(String query, Integer page, Model model) {
 		
-		query = "서면영화관";
-		
-		page = 1;
-		
-		
+		query += "영화관";
+		if(page == null) {
+			page = 1;
+		}
 		
 		log.info(mapService.searchMap(query, page));
-		return "map/list";
 		
+		model.addAttribute("mapList", mapService.searchMap(query, page));
+		
+		return "map/mapList";
 	}
 	
-	
-	@GetMapping("mapcontent")
-	public String mapcontent(MapVO vo) {
-		
-
-		return null;
-	}
 }

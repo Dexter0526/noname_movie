@@ -8,6 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- head -->
+	<jsp:include page="../head.jsp"/>
+	
+	<div class="container">
+	
 	<div>
 		<input id="query" name="query" value="${query}" placeholder="제목*">
 		<input type="button" id="btnSearch" value="영화검색">
@@ -44,7 +49,7 @@
 			</c:forEach>
 		</c:if>
 	</div>
-	
+	</div>
 		
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>	
 <script>
