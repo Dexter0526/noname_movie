@@ -46,7 +46,7 @@
             <li><a href="/movie/main">영화 검색</a></li>
 			<li><a href="/address/search">영화관 검색</a></li>
 				<c:if test = "${email ne null}">
-					<li><a href="/member/myAccount">내정보</a></li>
+					<li><a href="#" onclick="winOpen();" >내정보</a></li>
 				</c:if>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -62,5 +62,10 @@
 	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="${pageContext.request.contextPath}/resources/js/ie10-viewport-bug-workaround.js"></script>
+	<script>
+		function winOpen() {
+			var childWindow = window.open('/member/passwdCheckForm', '', 'width=400,height=300');
+		}
+	</script>
 </body>
 </html>
