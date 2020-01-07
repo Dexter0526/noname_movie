@@ -10,7 +10,7 @@
 </head>
 <body>
 		<!-- head -->
-	<jsp:include page="../head.jsp"/>
+	<jsp:include page="../header-navbar.jsp"/>
 	
 	<div class="container">
 	<form action="/movie/commentUpdate" method="post">

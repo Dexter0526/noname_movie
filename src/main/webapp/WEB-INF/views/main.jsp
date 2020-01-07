@@ -1,116 +1,104 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="../../favicon.ico">
+   <head>
+      <title>team noname</title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,700" rel="stylesheet" />      
+ 	  
+ 	  <!-- CSS -->
+      <link href="${pageContext.request.contextPath}/resources/css/re/screen.css" rel="stylesheet" />
+      <link href="${pageContext.request.contextPath}/resources/css/re/style.css" rel="stylesheet" />      
+      <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+      <!-- CSS -->      
+   </head>
 
-<title></title>
+ <body class="home" id="page">
 
-<!-- Bootstrap core CSS -->
-<link
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
-	rel="stylesheet">
 
-<!-- Custom styles for this template -->
-<link href="${pageContext.request.contextPath}/resources/css/cover.css"
-	rel="stylesheet">
+<!-- login/join -->
+		 <c:if test = "${email eq null}">
+			<nav class="cd-main-nav js-main-nav">
+				<ul class="cd-main-nav__list js-signin-modal-trigger">
+						<li><a class="cd-main-nav__item cd-main-nav__item--signin" href="#0" data-signin="login" data-toggle="modal" data-target="#log">로그인</a></li>
+						<li><a class="cd-main-nav__item cd-main-nav__item--signup" href="#0" data-signin="signup" data-toggle="modal" data-target="#join">회원가입</a></li>
+				</ul>
+			</nav>
+		</c:if>
+		<c:if test = "${email ne null}">
+			<nav class="cd-main-nav js-main-nav">
+				<ul class="cd-main-nav__list js-signin-modal-trigger">
+						<li><a class="cd-main-nav__item cd-main-nav__item--signin" data-signin="logout" onclick="location.href = '/member/logout'">로그아웃</a></li>
+						<li><a class="cd-main-nav__item cd-main-nav__item--signin" href="#" onclick="winOpen();">내정보</a></li>
+				</ul>
+			</nav>
+		</c:if> 
+<!-- login/join -->
+				
 
-<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-<script
-	src="${pageContext.request.contextPath}/resources/js/ie-emulation-modes-warning.js"></script>
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<body>
-
-	<div class="site-wrapper">
-
-		<div class="site-wrapper-inner">
-
-			<div class="cover-container">
-
-				<div class="masthead clearfix">
-					<div class="inner">
-						<h3 class="masthead-brand">Noname Movie</h3>
-						<nav>
-							<ul class="nav masthead-nav">
-								<li class="active"><a href="main">Home</a></li>
-								<li><a href="/movie/main">영화 검색</a></li>
-								<li><a href="/address/search">영화관 검색</a></li>
-								<c:if test = "${email ne null}">
-									<li><a href="#" onclick="winOpen();" >내정보</a></li>
-								</c:if>
-							</ul>
-						</nav>
-					</div>
+        <!-- Main Content -->
+		<div class="content-box">
+		<!-- Hero Section -->
+		<section class="section section-hero">
+		<div class="hero-box">
+			<div class="container">
+				<div class="hero-text align-center">
+				<h1>NONAME</h1>
 				</div>
-
-				<div class="inner cover">
-					<form action="/movie/main">
-						<h1 class="cover-heading">
-							<input id="query" name="query" value="${query}" style="color:black" placeholder="영화 제목*">
-							<input type="submit" class = "btn btn-lg btn-default" value="영화검색">
-						</h1>
-					</form>
-					<p class="lead">Cover is a one-page template for building
-						simple and beautiful home pages. Download, edit the text, and add
-						your own fullscreen background photo to make it your own.</p>
-					<c:if test = "${email eq null}">
-					<p class="lead">
-						<button type="button" data-toggle="modal" data-target="#log" class = "btn btn-lg btn-default">로그인</button>
-						<button type="button" data-toggle="modal" data-target="#join" class = "btn btn-lg btn-default">회원가입</button>
-					</p>
-					</c:if>
-					<c:if test = "${email ne null}">
-					<p class = "lead">
-						<button type="button" class="btn btn-lg btn-default" onclick="location.href = '/member/logout'">로그아웃</button>
-					</p>
-					</c:if>
-				</div>
-
-				<div class="mastfoot">
-					<div class="inner">
-						<p>
-							Cover template for <a href="http://getbootstrap.com">Bootstrap</a>,
-							by <a href="https://twitter.com/mdo">@mdo</a>.
-						</p>
-					</div>
-				</div>
-
 			</div>
-
+			<form class="destinations-form" action="/movie/main">
+				<div class="input-line">
+					<input type="text" name="query" value="${query}" class="form-input check-value" placeholder="작품 제목, 배우, 감독을 검색해보세요." />
+					<button type="submit" name="destination-submit" class="form-submit btn btn-special">Find</button>
+				</div>
+			</form>
+		</div>           
+		</section>
 		</div>
+		
+		
+		<div class="icon-line">
+		 <img src="${pageContext.request.contextPath}/resources/img/9999.png"  class="iconimg"  alt="">
+		<h7>영화를 검색하고 평점과 리뷰를 만나보세요.</h7>
+        </div>    
 
-	</div>
+	  <!-- footer start -->
+      <%@ include file="./include/footer.jsp"%>
+	  <!-- footer close -->
 
-	<%--모달 로그인 테이블 --%>
-	<%@ include file="./member/logModal.jsp"%>
-	<%@ include file="./member/joinModal.jsp"%>
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script src="${pageContext.request.contextPath}/resources/js/ie10-viewport-bug-workaround.js"></script>
-	<script>
-		function winOpen() {
-			var childWindow = window.open('/member/passwdCheckForm', '', 'width=400,height=300');
-		}
-	</script>
+	  <!-- footer-bar main fixed -->
+      <%@ include file="./include/footer-bar.jsp"%>
+	  <!-- footer-bar close -->	
+	
+	
+	  <%@ include file="member/logModal.jsp"%>
+      <%@ include file="member/joinModal.jsp"%>
+	
+	
+      <!-- Scripts -->
+      
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+     
+      <script src="${pageContext.request.contextPath}/resources/js/re/jquery.js"></script>
+      <script src="${pageContext.request.contextPath}/resources/js/re/functions.js"></script>
+      <script src="${pageContext.request.contextPath}/resources/js/re/main.js"></script>
+      <script src="${pageContext.request.contextPath}/resources/js/re/placeholders.min.js"></script>
+      <!-- Script close -->
+      
+	  <script>
+			function winOpen() {
+				var childWindow = window.open('/member/passwdCheckForm', '', 'width=400,height=300');
+			}
+	  </script>
+	
+	
 </body>
 </html>

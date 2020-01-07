@@ -10,8 +10,11 @@
 <body>
 	<!-- Modal -->
 	<%-- #join --%>
-	<div class="modal fade" id="log" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	
+	<div class="modal fade"  id="log" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		
 		<div class="modal-dialog">
+		
 			<form class="form-signin" name="frm" action="/member/log" method="post" id="frm">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -20,13 +23,19 @@
 						</button>
 						<h4 class="modal-title" id="myModalLabel">로그인</h4>
 					</div>
+					
+					
 					<div class="modal-body">
-						이메일<input type="email" name="email" class="form-control" placeholder="Email address" required>
-						비밀번호<input type="password" name="password" class="form-control" placeholder="Password" required> 
+						이메일
+						<input type="email" name="email" class="form-control" placeholder="Email address" required>
+						
+						
+						비밀번호
+						<input type="password" name="password" class="form-control" placeholder="Password" required> 
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-default" type="submit" id="frm_submit">Log</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button class="btn btn-primary" type="submit" id="frm_submit">버튼</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</form>		

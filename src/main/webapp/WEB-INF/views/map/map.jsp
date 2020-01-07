@@ -9,20 +9,20 @@
 </head>
 <body>
 	<!--카카오 지도 그리기-->
-	<div id="map" style="width: 500px; height: 400px;"></div>
+	<div id="map" style="width: 500px; height: 400px;" class = "cinema-list"></div>
 	<br>
 	
 	<!--지도에 대한 평가 폼-->
-	<div id="theaterCommentForm"></div>
+	<div id="theaterCommentForm" class = "cinema-list"></div>
 	<br>
 	
 	<!--지도에 대한 평가 리스트-->
-	<div id="theaterComment"></div>
+	<div id="theaterComment" class = "cinema-list"></div><br><br><br><br>
 	
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cc593c8c71c9e243a4e4f82864c90634"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-	<script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax.js"></script>
+	<script> 
 	<!--테이블 행 클릭시 이벤트-->
 	$('#table tr').click(function(){
 		var tr = $(this);
@@ -40,7 +40,6 @@
 		mapComment(id);
 		
 	})
-
 	<!--영화 평가 등록 클릭시 이벤트-->
 	$('#theaterCommentForm').on('click', 'input#insertComment', function(){
 		console.log("insert 실행");
@@ -118,7 +117,6 @@
 			center : new kakao.maps.LatLng(y, x),
 			level : 3
 		};
-
 		var map = new kakao.maps.Map(container, options);
 		
 		var markerPosition  = new kakao.maps.LatLng(y, x); 
@@ -130,7 +128,6 @@
 		marker.setMap(map);
 		var iwContent = '<div style="padding:5px;">' + placeName + '</div>';
 	    iwPosition = new kakao.maps.LatLng(y, x); //인포윈도우 표시 위치입니다
-
 		// 인포윈도우를 생성합니다
 		var infowindow = new kakao.maps.InfoWindow({
 		    position : iwPosition, 
@@ -190,7 +187,6 @@
 		
 		$('#theaterCommentForm').html(str);
 	}
-
 	<!--지도id에 대한 평가 등록 함수-->
 	function insertTheater(placeName, content, id, userRating){
 		$.ajax({
