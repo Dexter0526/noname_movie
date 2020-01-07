@@ -33,8 +33,9 @@ public class movieRestController {
 		
 		List<MovieVO> movieList = service.searchMovie(vo);
 		map.put("movieList", movieList);
-
-		service.searchData(query);
+		
+		//검색 정보 text로 내보내기
+		//service.searchData(query);
 		
 		return new ResponseEntity<>(map, HttpStatus.OK);
 	}
