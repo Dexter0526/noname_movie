@@ -52,7 +52,7 @@
 								<li><a href="/movie/main">영화 검색</a></li>
 								<li><a href="/address/search">영화관 검색</a></li>
 								<c:if test = "${email ne null}">
-									<li><a href="/member/myAccount" >내정보</a></li>
+									<li><a href="#" onclick="winOpen();" >내정보</a></li>
 								</c:if>
 							</ul>
 						</nav>
